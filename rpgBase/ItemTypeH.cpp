@@ -7,7 +7,7 @@ Item* BuildItem(ITEMLIST itemId)
 	case (ITEMLIST::ITEM_APPLE):
 		return new ItemBuffer(
 			"Apple", "Apple", 15, Item::COMMON,
-			{ {Buff::INSTANT_HP_RESTORE, 30} },
+			{ {Buff::INSTANT_HP_RESTORE, 30, Buff::SELF} },
 			{ "Just an apple, but you'd",
 			"better wash it before",
 			"eat it" }

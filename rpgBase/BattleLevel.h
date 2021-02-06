@@ -3,7 +3,7 @@
 #include "BattleHUD.h"
 #include "BackgroundsH.h"
 
-enum class Target {PLAYER, ENEMY};
+enum class BattleCharacter { PLAYER, ENEMY };
 
 class BattleLevel :
     public Level
@@ -30,13 +30,16 @@ protected:
     void handleEnemySkillParse();
     void handleEnemyEffects();
 
+    void handleEffectFrom(BattleCharacter user, const Buff& effect);
+    void handleEffectTo(BattleCharacter tar, const Buff& effect);
+
     enum LevelState { ENTER, RUN, LEAVE, LEAVEBATTLE } state;
     enum BattleState {ENTERSTATE, PLAYERTURN, PLAYERSKILLPARSE, PLAYERTURNRES, PLAYERTURNEND, ENEMYTURN, ENEMYSKILLPARSE, ENEMYTURNRES, ENEMYTURNEND, RESULTS} battleState;
 
     Spell* currentSkill;
-    int currentBuff;
+    int currentBuff; //For currentSkill effects
 
-    int currentCharEffect;
+    int currentCharEffect; //For current character effects (DoT curse, regeneration, etc)
 
     BattleHUD* battleHud;
 

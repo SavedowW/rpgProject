@@ -41,7 +41,7 @@ Player::Player(const Vector2& nPos) :
 
 	spells.push_back(new Spell(
 		"Heal",
-		{ {Buff::INSTANT_HP_RESTORE, 50} }, 5,
+		{ {Buff::INSTANT_HP_RESTORE, 50, Buff::SELF} }, 5,
 		{ {"A green shine surrounds you, and your wounds are quickly healing", "For a certain price, of course."} },
 		{"A simple \"regeneration burst\"",
 		"spell. It wastes mana as a",
@@ -51,7 +51,7 @@ Player::Player(const Vector2& nPos) :
 	);
 	spells.push_back(new Spell(
 		"Firestorm",
-		{ {Buff::INSTANT_MAGICAL_DAMAGE, 50} }, 15,
+		{ {Buff::INSTANT_MAGICAL_DAMAGE, 50, Buff::ENEMY} }, 15,
 		{ {"A merciless fire absorbs everything around you.", "There is no way to dodge this spell." } },
 		{"A complicated spell that",
 		"summons a firestorm. Yes,",
@@ -64,7 +64,7 @@ Player::Player(const Vector2& nPos) :
 	);
 	spells.push_back(new Spell(
 		"Vampire's bite",
-		{ {Buff::INSTANT_PHYSICAL_DAMAGE, 20}, {Buff::INSTANT_HP_RESTORE, 5} }, 3,
+		{ {Buff::INSTANT_PHYSICAL_DAMAGE, 20, Buff::ENEMY}, {Buff::INSTANT_HP_RESTORE, 5, Buff::SELF} }, 3,
 		{ {"You're quickly jump to the enemy", "and put your fangs into his neck." } },
 		{"A legacy of your vampire roots.",
 		"It's a basic skill, avaible",
@@ -72,13 +72,13 @@ Player::Player(const Vector2& nPos) :
 	);
 	spells.push_back(new Spell(
 		"Ultima",
-		{ {Buff::OT_CURSE, 10, 3}, {Buff::OT_HPREGEN, 10, 4} }, 10,
+		{ {Buff::OT_CURSE, 10, Buff::ENEMY, 3}, {Buff::OT_HPREGEN, 10, Buff::SELF, 4} }, 10,
 		{ {"Broken spell activated" } },
 		{ "Not required." })
 	);
 	spells.push_back(new Spell(
 		"Soul protection",
-		{ {Buff::OT_SOULPROTECTION, 1, 2} }, 10,
+		{ {Buff::OT_SOULPROTECTION, 1, Buff::SELF, 2} }, 10,
 		{ {"Blessed spell activated" } },
 		{ "Not required." })
 	);
@@ -135,7 +135,7 @@ int Player::useItem(int id)
 		{
 			spells.push_back(new Spell(
 				"Mystic blade",
-				{ { Buff::INSTANT_PHYSICAL_DAMAGE, 40 } }, 5,
+				{ { Buff::INSTANT_PHYSICAL_DAMAGE, 40, Buff::ENEMY } }, 5,
 				{ {"You swing your blade quickly, in a single plane,", "and unleash it's shine in a ruthless wave."} },
 				{"This skill can be performed",
 				"only with Exthorium.",

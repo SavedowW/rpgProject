@@ -72,7 +72,7 @@ int Character::receiveEffect(Buff effect)
 		if (checkEffect(Buff::OT_SOULPROTECTION))
 			return 0;
 		else
-			return receiveEffect(Buff(Buff::INSTANT_MAGICAL_DAMAGE, effect.value));
+			return receiveEffect(Buff(Buff::INSTANT_MAGICAL_DAMAGE, effect.value, Buff::SELF));
 
 	} else if (effect.effect == Buff::OT_SOULPROTECTION) {
 		buffs.push_back(effect);

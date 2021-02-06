@@ -21,7 +21,7 @@ Wyvern::Wyvern(GameCore* nGameCore)
 
 	spells.push_back(new Spell(
 		"Ultima",
-		{ {Buff::OT_CURSE, 10, 3}, {Buff::OT_HPREGEN, 10, 4} }, 10,
+		{ {Buff::OT_CURSE, 10, Buff::ENEMY, 3}, {Buff::OT_HPREGEN, 10, Buff::SELF, 4} }, 10,
 		{ {"Broken spell activated" } },
 		{ "Not required." })
 	);

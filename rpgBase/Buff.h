@@ -12,12 +12,14 @@ struct Buff
 		OT_SOULPROTECTION,
 		OT_HPREGEN
 	} effect;
+	enum Target {SELF, ENEMY} target;
 	float value;
 	int timer;
-	Buff(Buffs nEffect, float nValue, int nTimer = -1)
+	Buff(Buffs nEffect, float nValue, Target nTar, int nTimer = -1)
 	{
 		effect = nEffect;
 		value = nValue;
 		timer = nTimer;
+		target = nTar;
 	}
 };

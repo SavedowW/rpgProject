@@ -348,76 +348,41 @@ void BattleLevel::handlePlayerSkillParse()
 		if (currentBuff < currentSkill->effects.size())
 		{
 			Buff& effect = currentSkill->effects[currentBuff];
-			int val;
-			switch (effect.effect)
+			/*switch (effect.effect)
 			{
 			case (Buff::INSTANT_HP_RESTORE):
-				val = player->receiveEffect(effect);
-				gameCore->playSfx(GameCore::SFX_HEAL);
-				battleHud->pushMessage({
-				{"You have restored " + gameCore->intToString(val) + " HP"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::PLAYER, effect);
 				break;
 
 			case (Buff::INSTANT_MP_RESTORE):
-				val = player->receiveEffect(effect);
-				gameCore->playSfx(GameCore::SFX_HEAL);
-				battleHud->pushMessage({
-				{"You have restored " + gameCore->intToString(val) + " MP"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::PLAYER, effect);
 				break;
 
 			case (Buff::INSTANT_MAGICAL_DAMAGE):
-				val = battleRequest.enemy->receiveEffect(effect);
-				cam->shake(10, 10, 20);
-				gameCore->playSfx(GameCore::SFX_HIT1);
-				battleHud->pushMessage({
-				{battleRequest.enemy->name + " have taken magical damage! -" + gameCore->intToString(val) + " HP"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::ENEMY, effect);
 				break;
 
 			case (Buff::INSTANT_PHYSICAL_DAMAGE):
-				val = battleRequest.enemy->receiveEffect(effect);
-				cam->shake(10, 10, 20);
-				gameCore->playSfx(GameCore::SFX_HIT1);
-				battleHud->pushMessage({
-				{battleRequest.enemy->name + " have taken physical damage! -" + gameCore->intToString(val) + " HP"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::ENEMY, effect);
 				break;
 
 			case (Buff::OT_CURSE):
-				val = battleRequest.enemy->receiveEffect(effect);
-				battleHud->pushMessage({
-				{battleRequest.enemy->name + " is now under curse!"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::ENEMY, effect);
 				break;
 
 			case (Buff::INSTANT_CURSE_DAMAGE):
-				val = battleRequest.enemy->receiveEffect(effect);
-				if (val == 0)
-					battleHud->pushMessage({
-					{"\"Soul protection\" reduced curse damage to 0!"}
-						}, 9, 5, 10, 0);
-				else
-					battleHud->pushMessage({
-					{battleRequest.enemy->name + " have taken curse damage! -" + gameCore->intToString(val) + " HP"}
-						}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::ENEMY, effect);
 				break;
 
 			case (Buff::OT_SOULPROTECTION):
-				val = player->receiveEffect(effect);
-				battleHud->pushMessage({
-				{"You are now under \"soul protection\"."}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::PLAYER, effect);
 				break;
 
 			case (Buff::OT_HPREGEN):
-				val = player->receiveEffect(effect);
-				battleHud->pushMessage({
-				{"You are now healing much faster."}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::PLAYER, effect);
 				break;
-			}
+			}*/
+			handleEffectFrom(BattleCharacter::PLAYER, effect);
 		}
 		else
 		{
@@ -441,27 +406,14 @@ void BattleLevel::handlePlayerEffects()
 			//Handle buffs[currentCharEffect]
 
 			Buff& effect = player->buffs[currentCharEffect];
-			float value;
 			switch (effect.effect)
 			{
 			case (Buff::OT_CURSE):
-				value = player->receiveEffect(Buff(Buff::INSTANT_CURSE_DAMAGE, effect.value));
-				if (value == 0)
-					battleHud->pushMessage({
-					{"\"Soul protection\" reduced curse damage to 0!"}
-						}, 9, 5, 10, 0);
-				else
-					battleHud->pushMessage({
-					{"You have taken curse damage! -" + gameCore->intToString(value) + " HP"}
-						}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::PLAYER, Buff(Buff::INSTANT_CURSE_DAMAGE, effect.value, Buff::SELF));
 				break;
 
 			case (Buff::OT_HPREGEN):
-				value = player->receiveEffect(Buff(Buff::INSTANT_HP_RESTORE, effect.value));
-				gameCore->playSfx(GameCore::SFX_HEAL);
-				battleHud->pushMessage({
-				{"You have restored " + gameCore->intToString(value) + " HP"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::PLAYER, Buff(Buff::INSTANT_HP_RESTORE, effect.value, Buff::SELF));
 				break;
 			}
 		}
@@ -556,76 +508,40 @@ void BattleLevel::handleEnemySkillParse()
 		if (currentBuff < currentSkill->effects.size())
 		{
 			Buff& effect = currentSkill->effects[currentBuff];
-			int val;
-			switch (effect.effect)
+			/*switch (effect.effect)
 			{
 			case (Buff::INSTANT_HP_RESTORE):
-				val = battleRequest.enemy->receiveEffect(effect);
-				gameCore->playSfx(GameCore::SFX_HEAL);
-				battleHud->pushMessage({
-				{battleRequest.enemy->name + " have restored " + gameCore->intToString(val) + " HP"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::ENEMY, effect);
 				break;
 
 			case (Buff::INSTANT_MP_RESTORE):
-				val = battleRequest.enemy->receiveEffect(effect);
-				gameCore->playSfx(GameCore::SFX_HEAL);
-				battleHud->pushMessage({
-				{battleRequest.enemy->name + " have restored " + gameCore->intToString(val) + " MP"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::ENEMY, effect);
 				break;
 
 			case (Buff::INSTANT_MAGICAL_DAMAGE):
-				val = player->receiveEffect(effect);
-				cam->shake(15, 15, 20);
-				gameCore->playSfx(GameCore::SFX_HIT2);
-				battleHud->pushMessage({
-				{"You have taken magical damage! -" + gameCore->intToString(val) + " HP"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::PLAYER, effect);
 				break;
 
 			case (Buff::INSTANT_PHYSICAL_DAMAGE):
-				val = player->receiveEffect(effect);
-				cam->shake(15, 15, 20);
-				gameCore->playSfx(GameCore::SFX_HIT2);
-				battleHud->pushMessage({
-				{"You have taken physical damage! -" + gameCore->intToString(val) + " HP"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::PLAYER, effect);
 				break;
 
 			case (Buff::OT_CURSE):
-				val = player->receiveEffect(effect);
-				battleHud->pushMessage({
-				{"You are now under curse!"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::PLAYER, effect);
 				break;
 
 			case (Buff::INSTANT_CURSE_DAMAGE):
-				val = player->receiveEffect(effect);
-				if (val == 0)
-					battleHud->pushMessage({
-					{"\"Soul protection\" reduced curse damage to 0!"}
-						}, 9, 5, 10, 0);
-				else
-					battleHud->pushMessage({
-					{"You have taken curse damage! -" + gameCore->intToString(val) + " HP"}
-						}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::PLAYER, effect);
 				break;
 
 			case (Buff::OT_SOULPROTECTION):
-				val = battleRequest.enemy->receiveEffect(effect);
-				battleHud->pushMessage({
-				{battleRequest.enemy->name + " is now under \"soul protection\"."}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::ENEMY, effect);
 				break;
 
 			case (Buff::OT_HPREGEN):
-				val = battleRequest.enemy->receiveEffect(effect);
-				battleHud->pushMessage({
-				{battleRequest.enemy->name + " is now healing much faster."}
-					}, 9, 5, 10, 0);
-				break;
-			}
+				handleEffectTo(BattleCharacter::ENEMY, effect);
+			}*/
+			handleEffectFrom(BattleCharacter::ENEMY, effect);
 		}
 		else
 		{
@@ -653,23 +569,11 @@ void BattleLevel::handleEnemyEffects()
 			switch (effect.effect)
 			{
 			case (Buff::OT_CURSE):
-				value = battleRequest.enemy->receiveEffect(Buff(Buff::INSTANT_CURSE_DAMAGE, effect.value));
-				if (value == 0)
-					battleHud->pushMessage({
-					{"\"Soul protection\" reduced curse damage to 0!"}
-						}, 9, 5, 10, 0);
-				else
-					battleHud->pushMessage({
-					{battleRequest.enemy->name + " have taken curse damage! -" + gameCore->intToString(value) + " HP"}
-						}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::ENEMY, Buff(Buff::INSTANT_CURSE_DAMAGE, effect.value, Buff::SELF));
 				break;
 
 			case (Buff::OT_HPREGEN):
-				value = battleRequest.enemy->receiveEffect(Buff(Buff::INSTANT_HP_RESTORE, effect.value));
-				gameCore->playSfx(GameCore::SFX_HEAL);
-				battleHud->pushMessage({
-				{battleRequest.enemy->name + " have restored " + gameCore->intToString(value) + " HP"}
-					}, 9, 5, 10, 0);
+				handleEffectTo(BattleCharacter::ENEMY, Buff(Buff::INSTANT_HP_RESTORE, effect.value, Buff::SELF));
 				break;
 			}
 		}
@@ -682,5 +586,169 @@ void BattleLevel::handleEnemyEffects()
 		battleState = PLAYERTURN;
 		battleHud->open();
 		player->beginTurn();
+	}
+}
+
+void BattleLevel::handleEffectFrom(BattleCharacter user, const Buff& effect)
+{
+	cout << int(effect.effect) << " : " << int(effect.target) << endl;
+	if (user == BattleCharacter::PLAYER)
+	{
+		if (effect.target == Buff::SELF)
+		{
+			handleEffectTo(BattleCharacter::PLAYER, effect);
+		}
+		else
+		{
+			handleEffectTo(BattleCharacter::ENEMY, effect);
+		}
+	}
+
+	else if (user == BattleCharacter::ENEMY)
+	{
+		if (effect.target == Buff::SELF)
+		{
+			handleEffectTo(BattleCharacter::ENEMY, effect);
+		}
+		else
+		{
+			handleEffectTo(BattleCharacter::PLAYER, effect);
+		}
+	}
+}
+
+void BattleLevel::handleEffectTo(BattleCharacter tar, const Buff& effect)
+{
+	if (tar == BattleCharacter::PLAYER)
+	{
+		int val = player->receiveEffect(effect);
+		switch (effect.effect)
+		{
+
+		case (Buff::INSTANT_HP_RESTORE):
+			gameCore->playSfx(GameCore::SFX_HEAL);
+			battleHud->pushMessage({
+			{"You have restored " + gameCore->intToString(val) + " HP"}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::INSTANT_MP_RESTORE):
+			gameCore->playSfx(GameCore::SFX_HEAL);
+			battleHud->pushMessage({
+			{"You have restored " + gameCore->intToString(val) + " MP"}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::OT_SOULPROTECTION):
+			battleHud->pushMessage({
+			{"You are now under \"soul protection\"."}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::OT_HPREGEN):
+			battleHud->pushMessage({
+			{"You are now healing much faster."}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::INSTANT_MAGICAL_DAMAGE):
+			cam->shake(15, 15, 20);
+			gameCore->playSfx(GameCore::SFX_HIT2);
+			battleHud->pushMessage({
+			{"You have taken magical damage! -" + gameCore->intToString(val) + " HP"}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::INSTANT_PHYSICAL_DAMAGE):
+			cam->shake(15, 15, 20);
+			gameCore->playSfx(GameCore::SFX_HIT2);
+			battleHud->pushMessage({
+			{"You have taken physical damage! -" + gameCore->intToString(val) + " HP"}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::OT_CURSE):
+			battleHud->pushMessage({
+			{"You are now under curse!"}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::INSTANT_CURSE_DAMAGE):
+			if (val == 0)
+				battleHud->pushMessage({
+				{"\"Soul protection\" reduced curse damage to 0!"}
+					}, 9, 5, 10, 0);
+			else
+				battleHud->pushMessage({
+				{"You have taken curse damage! -" + gameCore->intToString(val) + " HP"}
+					}, 9, 5, 10, 0);
+			break;
+		}
+	}
+
+	else if (tar == BattleCharacter::ENEMY)
+	{
+		int val = battleRequest.enemy->receiveEffect(effect);
+		switch (effect.effect)
+		{
+		case (Buff::INSTANT_HP_RESTORE):
+			gameCore->playSfx(GameCore::SFX_HEAL);
+			battleHud->pushMessage({
+			{battleRequest.enemy->name + " have restored " + gameCore->intToString(val) + " HP"}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::INSTANT_MP_RESTORE):
+			gameCore->playSfx(GameCore::SFX_HEAL);
+			battleHud->pushMessage({
+			{battleRequest.enemy->name + " have restored " + gameCore->intToString(val) + " MP"}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::OT_SOULPROTECTION):
+			battleHud->pushMessage({
+			{battleRequest.enemy->name + " is now under \"soul protection\"."}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::OT_HPREGEN):
+			battleHud->pushMessage({
+			{battleRequest.enemy->name + " is now healing much faster."}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::INSTANT_MAGICAL_DAMAGE):
+			cam->shake(10, 10, 20);
+			gameCore->playSfx(GameCore::SFX_HIT1);
+			battleHud->pushMessage({
+			{battleRequest.enemy->name + " have taken magical damage! -" + gameCore->intToString(val) + " HP"}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::INSTANT_PHYSICAL_DAMAGE):
+			cam->shake(10, 10, 20);
+			gameCore->playSfx(GameCore::SFX_HIT1);
+			battleHud->pushMessage({
+			{battleRequest.enemy->name + " have taken physical damage! -" + gameCore->intToString(val) + " HP"}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::OT_CURSE):
+			battleHud->pushMessage({
+			{battleRequest.enemy->name + " is now under curse!"}
+				}, 9, 5, 10, 0);
+			break;
+
+		case (Buff::INSTANT_CURSE_DAMAGE):
+			if (val == 0)
+				battleHud->pushMessage({
+				{"\"Soul protection\" reduced curse damage to 0!"}
+					}, 9, 5, 10, 0);
+			else
+				battleHud->pushMessage({
+				{battleRequest.enemy->name + " have taken curse damage! -" + gameCore->intToString(val) + " HP"}
+					}, 9, 5, 10, 0);
+			break;
+		}
 	}
 }
