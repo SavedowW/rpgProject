@@ -348,40 +348,6 @@ void BattleLevel::handlePlayerSkillParse()
 		if (currentBuff < currentSkill->effects.size())
 		{
 			Buff& effect = currentSkill->effects[currentBuff];
-			/*switch (effect.effect)
-			{
-			case (Buff::INSTANT_HP_RESTORE):
-				handleEffectTo(BattleCharacter::PLAYER, effect);
-				break;
-
-			case (Buff::INSTANT_MP_RESTORE):
-				handleEffectTo(BattleCharacter::PLAYER, effect);
-				break;
-
-			case (Buff::INSTANT_MAGICAL_DAMAGE):
-				handleEffectTo(BattleCharacter::ENEMY, effect);
-				break;
-
-			case (Buff::INSTANT_PHYSICAL_DAMAGE):
-				handleEffectTo(BattleCharacter::ENEMY, effect);
-				break;
-
-			case (Buff::OT_CURSE):
-				handleEffectTo(BattleCharacter::ENEMY, effect);
-				break;
-
-			case (Buff::INSTANT_CURSE_DAMAGE):
-				handleEffectTo(BattleCharacter::ENEMY, effect);
-				break;
-
-			case (Buff::OT_SOULPROTECTION):
-				handleEffectTo(BattleCharacter::PLAYER, effect);
-				break;
-
-			case (Buff::OT_HPREGEN):
-				handleEffectTo(BattleCharacter::PLAYER, effect);
-				break;
-			}*/
 			handleEffectFrom(BattleCharacter::PLAYER, effect);
 		}
 		else
@@ -508,39 +474,6 @@ void BattleLevel::handleEnemySkillParse()
 		if (currentBuff < currentSkill->effects.size())
 		{
 			Buff& effect = currentSkill->effects[currentBuff];
-			/*switch (effect.effect)
-			{
-			case (Buff::INSTANT_HP_RESTORE):
-				handleEffectTo(BattleCharacter::ENEMY, effect);
-				break;
-
-			case (Buff::INSTANT_MP_RESTORE):
-				handleEffectTo(BattleCharacter::ENEMY, effect);
-				break;
-
-			case (Buff::INSTANT_MAGICAL_DAMAGE):
-				handleEffectTo(BattleCharacter::PLAYER, effect);
-				break;
-
-			case (Buff::INSTANT_PHYSICAL_DAMAGE):
-				handleEffectTo(BattleCharacter::PLAYER, effect);
-				break;
-
-			case (Buff::OT_CURSE):
-				handleEffectTo(BattleCharacter::PLAYER, effect);
-				break;
-
-			case (Buff::INSTANT_CURSE_DAMAGE):
-				handleEffectTo(BattleCharacter::PLAYER, effect);
-				break;
-
-			case (Buff::OT_SOULPROTECTION):
-				handleEffectTo(BattleCharacter::ENEMY, effect);
-				break;
-
-			case (Buff::OT_HPREGEN):
-				handleEffectTo(BattleCharacter::ENEMY, effect);
-			}*/
 			handleEffectFrom(BattleCharacter::ENEMY, effect);
 		}
 		else
