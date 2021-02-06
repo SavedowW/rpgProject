@@ -3,6 +3,7 @@
 #include "ItemTypeH.h"
 #include "Spell.h"
 #include "AnimatedTexture.h"
+#define Public public
 
 class Object
 {

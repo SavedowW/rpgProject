@@ -1,11 +1,11 @@
 #pragma once
 #include "Object.h"
 
-class Grass1 : 
+class Wall_high_out_lBottom : 
     public Object
 {
-public:
-    Grass1(float x, float y);
+Public:
+    Wall_high_out_lBottom(const Vector2 & nPos);
     SDL_Texture* getSprite();
 
 private:

@@ -90,7 +90,7 @@ protected:
 	virtual void renderLevel() = 0;
 	virtual void processInput(const SDL_Event& e) = 0;
 	virtual void handleDelayedActions();
-	static bool isLower(const Object* lhs, const Object* rhs);
+	
 	enum InputMethod { INPUT_DEFAULT, INPUT_HUD, INPUT_NOINPUT } inputMethod;
 
 	vector<DelayedAction*> actionList;
@@ -99,4 +99,6 @@ protected:
 	bool isRunning;
 	Vector2 size;
 	Camera* cam;
+
+	static bool isLower(const Object* lhs, const Object* rhs);
 };

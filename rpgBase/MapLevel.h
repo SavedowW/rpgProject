@@ -8,7 +8,7 @@
 #pragma once
 #include "Level.h"
 #include "LevelHUD.h"
-#define DRAWHBOX
+//#define DRAWHBOX
 
 class MapLevel :
     public Level

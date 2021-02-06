@@ -4,6 +4,14 @@ Item* BuildItem(ITEMLIST itemId)
 {
 	switch (itemId)
 	{
+	case (ITEMLIST::ITEM_EXCALIBUR):
+		return new ItemWeapon(
+			"Excalibur", "Excalibur", 250, Item::UNIQUE,
+			{ 30, 15, 10, 3, 10 },
+			{ "Ekusu--",
+			"CALIBAAAA" });
+		break;
+
 	case (ITEMLIST::ITEM_APPLE):
 		return new ItemBuffer(
 			"Apple", "Apple", 15, Item::COMMON,
@@ -14,22 +22,11 @@ Item* BuildItem(ITEMLIST itemId)
 		);
 		break;
 
-	case (ITEMLIST::ITEM_EXTHORIUM):
-		return new ItemWeapon(
-			"Exthorium", "Exthorium", 250, Item::UNIQUE,
-			{ 30, 15, 10, 3, 10 },
-			{ "A blade that makes user",
-			"able to send magical waves",
-			"like he's using spells" },
-			6);
-		break;
-
-	case (ITEMLIST::ITEM_EMPTINESS):
+	case (ITEMLIST::ITEM_NOTHINGNESS):
 		return new Item(
-			"Emptiness", "Emptiness", 0, Item::OTHER, Item::COMMON,
+			"Nothingness", "Nothingness", 0, Item::OTHER, Item::RARE,
 			{ "Literally nothing.",
-			"Nothing at all.",
-			"Just remove it." }
+			"Just throw it out."  }
 		);
 		break;
 

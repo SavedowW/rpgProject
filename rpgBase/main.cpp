@@ -52,12 +52,10 @@ int SDL_main(int argc, char* args[])
 	Level::gameCore = gameCore;
 
 	LevelResult levelResult = {1, 0};
-	Level* levels[4];
+	Level* levels[2];
 
 	levels[0] = new BattleLevel();
 	levels[1] = new MapLevel0();
-	levels[2] = new MapLevel1();
-	levels[3] = new MapLevel2();
 
 
 	while (levelResult.nextLvl != -1)
