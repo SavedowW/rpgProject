@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Items">
+      <UniqueIdentifier>{f96623c8-2626-4f3e-a11f-31441468fb57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Items\Item">
+      <UniqueIdentifier>{be5621fa-e8ef-4213-864a-ba76e6870ddf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Items\ItemTypes">
+      <UniqueIdentifier>{f9061eb8-5fb2-4a9d-9da5-ea05f4476253}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Items\ItemTypes\ItemWeapon">
+      <UniqueIdentifier>{85bc873e-dd64-48a9-81ac-dd98bb544827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Items\ItemTypes\ItemArmor">
+      <UniqueIdentifier>{bd5725e5-b358-4c55-aa9b-e21b038495a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Items\ItemTypes\ItemBuffer">
+      <UniqueIdentifier>{de41e6a2-0603-4364-8ed8-68e63f273495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Spells">
+      <UniqueIdentifier>{d3bfe727-d324-4503-bdac-2cfbdeb79a28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Spells\Spell">
+      <UniqueIdentifier>{bc27317c-0f59-4ca5-a1ca-499825919e43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters">
+      <UniqueIdentifier>{ad0abb2c-865b-4f7d-8805-530af9ac5f16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\Character">
+      <UniqueIdentifier>{24c102bc-e1c1-48e8-9898-cd158cc05230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\Player">
+      <UniqueIdentifier>{52fd9355-12de-48fe-a894-1e722e989d22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\Enemies">
+      <UniqueIdentifier>{6ec73872-eb83-453e-8fa7-95139334b157}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\Enemies\Wyvern">
+      <UniqueIdentifier>{0dae7eda-77ab-408f-a394-81485f294767}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore">
+      <UniqueIdentifier>{e30bc5c8-7587-46a1-a099-1a9ee276cc6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\Vector2">
+      <UniqueIdentifier>{491defa6-20d2-4ba9-b94e-b8eff46a8cdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\Core">
+      <UniqueIdentifier>{f19a846b-80d3-484e-95e9-888313ef6fab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\Camera">
+      <UniqueIdentifier>{aebff805-0641-47fb-a22b-fcc50cb04742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\Object">
+      <UniqueIdentifier>{03314bf2-ff5d-46af-960b-59f8e4628d72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{772ad5d5-51b5-4377-9803-768ff74d79a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels\Level">
+      <UniqueIdentifier>{7579faa1-9454-42f7-9ee8-659b2acca354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapObjects">
+      <UniqueIdentifier>{31e37f57-8f6a-49b9-bcc7-41ed181cd2d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels\MapLevel">
+      <UniqueIdentifier>{246dbfbf-39f7-4caf-8deb-eec8a89556bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\AnimatedTexture">
+      <UniqueIdentifier>{4b0eebe8-825d-4ac4-8c1b-55eeb7441bf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD">
+      <UniqueIdentifier>{eed649d6-79d1-4c1f-8eaa-80b3e266ac94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\LevelHUD">
+      <UniqueIdentifier>{81e5628d-cfc2-40ec-b0df-d7ecad8aea81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\Elements">
+      <UniqueIdentifier>{f4512e4e-e739-4bf7-b500-3284fc4d08f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\Text">
+      <UniqueIdentifier>{6e7c6b70-0338-42d9-b03b-064e77d091ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\Text\AnimatedTextLine">
+      <UniqueIdentifier>{d9607c10-4cce-46a2-b825-7ca812e0bed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\Text\AnimatedTextMultiline">
+      <UniqueIdentifier>{1efd0a71-e2bb-40c7-8508-d093b1151e6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\Elements\ElementMessageBox">
+      <UniqueIdentifier>{06d64ced-e92a-449f-b176-05e2224881b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\Font">
+      <UniqueIdentifier>{532f5ac1-3634-4c5c-aed7-cd760f49720f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\Font\Symbol">
+      <UniqueIdentifier>{4db4605e-bdeb-4ba6-8ac8-6b3e41093f10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\Elements\ElementmenuVSwitch">
+      <UniqueIdentifier>{44a250e0-426b-4538-9727-c588d453b04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\Elements\ElementInventoryMenu">
+      <UniqueIdentifier>{7d47d867-1129-4bd5-9949-8431f19a42af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\Text\TextMultiline">
+      <UniqueIdentifier>{71f92453-f4ad-44b7-aea1-31f9ab92849c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\Elements\ElementSkillsMenu">
+      <UniqueIdentifier>{06e5de04-a98b-4164-aa8a-ff661cb7da77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapObjects\Chests">
+      <UniqueIdentifier>{25f50ceb-21c8-4815-883b-52b3c73f1c68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapObjects\Chests\Chest">
+      <UniqueIdentifier>{ca7d761a-6a9d-423d-ad4f-ce205f1bcc53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\Elements\ElementChestMenu">
+      <UniqueIdentifier>{f6d10ba9-7d01-4e21-bb77-e8addb1edf7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\Enemies\Enemy">
+      <UniqueIdentifier>{81078fea-a113-402d-8a4f-87ece7d3ee88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels\BattleLevel">
+      <UniqueIdentifier>{c1a389ec-54a2-4b74-bfc0-3bb8d8893eef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\BattleHUD">
+      <UniqueIdentifier>{1eaf49b2-7436-48fc-b494-58bf57f39cbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\Elements\ElementBattleMessageBox">
+      <UniqueIdentifier>{a72c8cd2-bd79-4355-ad43-4971fa33eb76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels\BattleLevel\BattleBackgrounds">
+      <UniqueIdentifier>{337688b5-9da2-41a4-9819-cbc7f28fde30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels\BattleLevel\BattleBackgrounds\Background">
+      <UniqueIdentifier>{fbbb1185-bf70-4406-98a0-586ce5ef397b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels\BattleLevel\BattleBackgrounds\Background1">
+      <UniqueIdentifier>{2bb00009-f766-459b-9f48-7b44a3c84616}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\Elements\ElementMenuHSelect">
+      <UniqueIdentifier>{e70ab46d-8215-48ad-9471-5586b150e95c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\Elements\ElementMenuVSelect">
+      <UniqueIdentifier>{4048d48a-15ad-49e3-8d9b-44e4777f9800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\MessageHandler">
+      <UniqueIdentifier>{4dd6c16e-c7e0-47d7-8b64-0c163604c708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loaded">
+      <UniqueIdentifier>{acb61ee6-1e3e-4f12-9911-715da2748241}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Characters\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Items\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemWeapon.cpp">
+      <Filter>Items\ItemTypes\ItemWeapon</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemArmor.cpp">
+      <Filter>Items\ItemTypes\ItemArmor</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemBuffer.cpp">
+      <Filter>Items\ItemTypes\ItemBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Spell.cpp">
+      <Filter>Spells\Spell</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Characters\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Wyvern.cpp">
+      <Filter>Characters\Enemies\Wyvern</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>GameCore\Vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>GameCore\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCore.cpp">
+      <Filter>GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>GameCore\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>GameCore\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Levels\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="staticInit.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MapLevel.cpp">
+      <Filter>Levels\MapLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedTexture.cpp">
+      <Filter>GameCore\AnimatedTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelHUD.cpp">
+      <Filter>HUD\LevelHUD</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedTextLine.cpp">
+      <Filter>GameCore\Text\AnimatedTextLine</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedTextMultiline.cpp">
+      <Filter>GameCore\Text\AnimatedTextMultiline</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementMessageBox.cpp">
+      <Filter>HUD\Elements\ElementMessageBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Symbol.cpp">
+      <Filter>GameCore\Font\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>GameCore\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementMenuVSwitch.cpp">
+      <Filter>HUD\Elements\ElementmenuVSwitch</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementInventoryMenu.cpp">
+      <Filter>HUD\Elements\ElementInventoryMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="TextMultiline.cpp">
+      <Filter>GameCore\Text\TextMultiline</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementSkillsMenu.cpp">
+      <Filter>HUD\Elements\ElementSkillsMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Chest.cpp">
+      <Filter>MapObjects\Chests\Chest</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementChestMenu.cpp">
+      <Filter>HUD\Elements\ElementChestMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Characters\Enemies\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleLevel.cpp">
+      <Filter>Levels\BattleLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleHUD.cpp">
+      <Filter>HUD\BattleHUD</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementBattleMessageBox.cpp">
+      <Filter>HUD\Elements\ElementBattleMessageBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Levels\BattleLevel\BattleBackgrounds\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="Background1.cpp">
+      <Filter>Levels\BattleLevel\BattleBackgrounds\Background1</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementMenuHSelect.cpp">
+      <Filter>HUD\Elements\ElementMenuHSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementMenuVSelect.cpp">
+      <Filter>HUD\Elements\ElementMenuVSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageHandler.cpp">
+      <Filter>HUD\MessageHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemTypeH.cpp">
+      <Filter>Items\ItemTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Chest1.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Grass1.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="MapLevel1.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="MapLevel2.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Monitor.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="MapLevel0.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Player.h">
+      <Filter>Characters\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Items\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemWeapon.h">
+      <Filter>Items\ItemTypes\ItemWeapon</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemTypeH.h">
+      <Filter>Items\ItemTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemArmor.h">
+      <Filter>Items\ItemTypes\ItemArmor</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBuffer.h">
+      <Filter>Items\ItemTypes\ItemBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Spell.h">
+      <Filter>Spells\Spell</Filter>
+    </ClInclude>
+    <ClInclude Include="Buff.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Characters\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Wyvern.h">
+      <Filter>Characters\Enemies\Wyvern</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemiesH.h">
+      <Filter>Characters\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>GameCore\Vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>GameCore\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCore.h">
+      <Filter>GameCore</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>GameCore\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>GameCore\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Levels\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelsH.h">
+      <Filter>Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectsH.h">
+      <Filter>MapObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MapLevel.h">
+      <Filter>Levels\MapLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedTexture.h">
+      <Filter>GameCore\AnimatedTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelHUD.h">
+      <Filter>HUD\LevelHUD</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedTextLine.h">
+      <Filter>GameCore\Text\AnimatedTextLine</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedTextMultiline.h">
+      <Filter>GameCore\Text\AnimatedTextMultiline</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementMessageBox.h">
+      <Filter>HUD\Elements\ElementMessageBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Symbol.h">
+      <Filter>GameCore\Font\Symbol</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>GameCore\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementMenuVSwitch.h">
+      <Filter>HUD\Elements\ElementmenuVSwitch</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementInventoryMenu.h">
+      <Filter>HUD\Elements\ElementInventoryMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="TextMultiline.h">
+      <Filter>GameCore\Text\TextMultiline</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementSkillsMenu.h">
+      <Filter>HUD\Elements\ElementSkillsMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Chest.h">
+      <Filter>MapObjects\Chests\Chest</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementChestMenu.h">
+      <Filter>HUD\Elements\ElementChestMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Characters\Enemies\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleLevel.h">
+      <Filter>Levels\BattleLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleHUD.h">
+      <Filter>HUD\BattleHUD</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementBattleMessageBox.h">
+      <Filter>HUD\Elements\ElementBattleMessageBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Levels\BattleLevel\BattleBackgrounds\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="Background1.h">
+      <Filter>Levels\BattleLevel\BattleBackgrounds\Background1</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundsH.h">
+      <Filter>Levels\BattleLevel\BattleBackgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementMenuHSelect.h">
+      <Filter>HUD\Elements\ElementMenuHSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementMenuVSelect.h">
+      <Filter>HUD\Elements\ElementMenuVSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageHandler.h">
+      <Filter>HUD\MessageHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="DelayedAction.h">
+      <Filter>Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Chest1.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Grass1.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="MapLevel0.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="MapLevel1.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="MapLevel2.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Monitor.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
