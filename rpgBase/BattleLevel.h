@@ -9,7 +9,7 @@ class BattleLevel :
     public Level
 {
 public:
-    BattleLevel();
+    BattleLevel(int nLevelId);
 
     virtual void enter(int entrance);
     virtual LevelResult levelProcess();

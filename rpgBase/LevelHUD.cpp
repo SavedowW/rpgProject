@@ -36,26 +36,23 @@ void LevelHUD::draw()
 {
 	gameCore->setRenderMode(GameCore::RM_HUD);
 
-	//gameCore->quickDrawText("A very easy to use\nand great in realisation\nmultiline output", { 0, 0 }, 0, GameCore::TOP, GameCore::LEFT);
-
 
 	if (baseState != CLOSED)
 	{
-		gameCore->drawWindow(Vector2(203, 26), Vector2(210, 34));
+		gameCore->drawDarkWindow(Vector2(203, 26), Vector2(210, 34));
 
 		if (state == MAINMENU)
 		{
-			//gameCore->drawTextLine(title_mainMenu, titlePos);
 			gameCore->quickDrawText("MAIN MENU", titlePos, 0, GameCore::VCENTER, GameCore::HCENTER);
-			gameCore->drawWindow(Vector2(20, 100), Vector2(200, 120));
+			gameCore->drawDarkWindow(Vector2(20, 100), Vector2(200, 120));
 			mainMenu->draw();
 		}
 		else if (state == PLAYERDATA)
 		{
 			gameCore->quickDrawText("PLAYER DATA", titlePos, 0, GameCore::VCENTER, GameCore::HCENTER);
-			gameCore->drawWindow(Vector2(20, 100), Vector2(200, 120));
+			gameCore->drawDarkWindow(Vector2(20, 100), Vector2(200, 120));
 			mainMenu->draw();
-			gameCore->drawWindow(Vector2(240, 80), Vector2(300, 170));
+			gameCore->drawDarkWindow(Vector2(240, 80), Vector2(300, 170));
 			playerData->draw(Vector2(260, 90));
 		}
 		else if (state == INVENTORY)

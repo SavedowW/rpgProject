@@ -60,6 +60,8 @@ GameCore::GameCore(Core* nCore)
 	soundlist[SFX_HIT1] = loadSfx("SFX/battle/sfx_hit1.wav", 128);
 	soundlist[SFX_HIT2] = loadSfx("SFX/battle/sfx_hit2.wav", 128);
 	soundlist[SFX_HEAL] = loadSfx("SFX/battle/sfx_heal.wav", 128);
+	soundlist[SFX_BATTLEBEGIN_P1] = loadSfx("SFX/sfx_beginBattle_p1.wav", 128);
+	soundlist[SFX_BATTLEBEGIN_P2] = loadSfx("SFX/sfx_beginBattle_p2.wav", 128);
 }
 
 void GameCore::setRenderMode(RENDERMODE nRenderMode)

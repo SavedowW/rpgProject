@@ -1,6 +1,6 @@
 #pragma once
 #include "ElementMenuVSwitch.h"
-#include "ElementBattleMessageBox.h"
+#include "ElementMessageBox.h"
 #include "ElementMenuHSelect.h"
 #include "ElementMenuVSelect.h"
 
@@ -16,7 +16,7 @@ public:
 
 	bool *messageBoxOpened;
 
-	ElementBattleMessageBox* messageBox;
+	ElementMessageBox* messageBox;
 
 private:
 	GameCore* gameCore;

@@ -4,7 +4,7 @@
 class Floor_cRight : 
     public Object
 {
-Public:
+public:
     Floor_cRight(const Vector2 & nPos);
     SDL_Texture* getSprite();
 

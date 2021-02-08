@@ -50,7 +50,7 @@ public:
 	void resetTransition();
 
 	//Sounds
-	enum Sounds {SFX_HIT1, SFX_HIT2, SFX_HEAL, SNDSIZE};
+	enum Sounds {SFX_HIT1, SFX_HIT2, SFX_HEAL, SFX_BATTLEBEGIN_P1, SFX_BATTLEBEGIN_P2, SNDSIZE};
 	Mix_Chunk* loadSfx(const char* file, int volume);
 	void playSfx(Sounds snd);
 

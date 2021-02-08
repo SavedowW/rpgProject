@@ -23,32 +23,7 @@ Player::Player(const Vector2& nPos) :
 	exp = 1;
 	lvl = 1;
 
-	/*inventory.push_back(BuildItem(ITEMLIST::ITEM_APPLE));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_MP_RESTORE_POTION));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_WIZARDS_ROBE));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_EXTHORIUM));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_DGSOFSLESSSHL));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_GLAIVE_OF_CHAOS));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_HERETICAL_SPELLBOOK));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_SOULCRYSTAL));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_SOULCRYSTAL));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_SOULCRYSTAL));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_SOULCRYSTAL));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_SOULCRYSTAL));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_SOULCRYSTAL));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_SOULCRYSTAL));
-	inventory.push_back(BuildItem(ITEMLIST::ITEM_EMPTYCRYSTAL));*/
-
-	spells.push_back(new Spell(
-		"Heal",
-		{ {Buff::INSTANT_HP_RESTORE, 50, Buff::SELF} }, 5,
-		{ {"A green shine surrounds you, and your wounds are quickly healing", "For a certain price, of course."} },
-		{"A simple \"regeneration burst\"",
-		"spell. It wastes mana as a",
-		"resource. Other way, it would",
-		"waste your health what would",
-		"make it useless"})
-	);
+	spells.push_back(SkillFactory::BuildSkill(SkillFactory::SKILL_HEAL));
 	spells.push_back(new Spell(
 		"Firestorm",
 		{ {Buff::INSTANT_MAGICAL_DAMAGE, 50, Buff::ENEMY} }, 15,
@@ -91,7 +66,8 @@ Player::Player(const Vector2& nPos) :
 		"of them, and then they",
 		"appear outside.",
 		"And soldiers somehow",
-		"gets a bit richer."}
+		"gets a bit richer."},
+		{}
 	);
 	armor = new ItemArmor(
 		"Leather armor", "Leather armor", 100, Item::RARE,
@@ -131,47 +107,16 @@ int Player::useItem(int id)
 		weapon = temp;
 
 		//Receive unique skills
-		if (itemId == 6)
+		for (int i = 0; i < weapon->linkedSkills.size(); ++i)
 		{
-			spells.push_back(new Spell(
-				"Mystic blade",
-				{ { Buff::INSTANT_PHYSICAL_DAMAGE, 40, Buff::ENEMY } }, 5,
-				{ {"You swing your blade quickly, in a single plane,", "and unleash it's shine in a ruthless wave."} },
-				{"This skill can be performed",
-				"only with Exthorium.",
-				"Technically, you can fill any",
-				"object with magical",
-				"energy - or, to be precise,",
-				"you can create a cycled stream",
-				"inside any physical structure -",
-				"in a blade, for example. But,",
-				"it's not enough to simply swing",
-				"and unleash it at once.",
-				"No, you need to direct this",
-				"stream in the correct direction",
-				"by yourself, what's nearly",
-				"impossible. The reason",
-				"Exthorium is unique is",
-				"it's inner structure",
-				"that allows user to easily",
-				"create two cycled stream at",
-				"once - one along the whole",
-				"blade and second in the",
-				"handle - and control only",
-				"the small one which will",
-				"control the big and",
-				"powerfull one. Sounds too",
-				"complicated? You'll get used",
-				"to it."
-				}, itemId
-			)
-			);
+			addSkill(weapon->linkedSkills[i]);
 		}
 
 		//Remove unique skills
-		if (inventory[id]->itemId != 0)
+		ItemWeapon* oldWeapon = (ItemWeapon*)(inventory[id]);
+		for (int i = 0; i < oldWeapon->linkedSkills.size(); ++i)
 		{
-			removeSkill(inventory[id]->itemId);
+			deleteSkill(oldWeapon->linkedSkills[i]);
 		}
 
 		//Return ID of a new weapon
@@ -225,23 +170,6 @@ int Player::gainExp(int nExp)
 	{
 		exp += nExp;
 		return 0;
-	}
-}
-
-void Player::learnSkill(Spell* spell)
-{
-	spells.push_back(spell);
-}
-
-void Player::removeSkill(int rId)
-{
-	for (int i = 0; i < spells.size(); i++)
-	{
-		while (i < spells.size() && spells[i]->spellId == rId)
-		{
-			delete spells[i];
-			spells.erase(spells.begin() + i);
-		}
 	}
 }
 

@@ -4,12 +4,12 @@ Item* BuildItem(ITEMLIST itemId)
 {
 	switch (itemId)
 	{
-	case (ITEMLIST::ITEM_EXCALIBUR):
-		return new ItemWeapon(
-			"Excalibur", "Excalibur", 250, Item::UNIQUE,
-			{ 30, 15, 10, 3, 10 },
-			{ "Ekusu--",
-			"CALIBAAAA" });
+	case (ITEMLIST::ITEM_JUNK):
+		return new Item(
+			"Junk", "Junk", 1, Item::OTHER, Item::COMMON,
+			{ "Just a junk.",
+			  "No way to use it." }
+		);
 		break;
 
 	case (ITEMLIST::ITEM_APPLE):
@@ -18,24 +18,61 @@ Item* BuildItem(ITEMLIST itemId)
 			{ {Buff::INSTANT_HP_RESTORE, 30, Buff::SELF} },
 			{ "Just an apple, but you'd",
 			"better wash it before",
-			"eat it" }
+			"eat it. Especially because",
+			"it's from a trash can."}
 		);
 		break;
 
-	case (ITEMLIST::ITEM_NOTHINGNESS):
+	case (ITEMLIST::ITEM_EXCALIBUR_RUSTY):
+		return new ItemWeapon(
+			"Rusty Excalibur", "Rusty Excalibur", 100, Item::UNIQUE,
+			{ 15, 20, 5, 3, 5 },
+			{ "It used to be a sacred",
+			"sword, but now it's",
+			"power is gone. Probably,",
+			"it's possible to reveal",
+			"a part of it's previous",
+			"strength."}, 
+			{SkillFactory::SKILL_CURSE_OF_GONE_HOLINESS});
+		break;
+
+	case (ITEMLIST::ITEM_NOTE_BITE):
 		return new Item(
-			"Nothingness", "Nothingness", 0, Item::OTHER, Item::RARE,
-			{ "Literally nothing.",
-			"Just throw it out."  }
+			"Disappointing note", "Disappointing note", 0, Item::OTHER, Item::RARE,
+			{ "HAHA",
+			"GOT BITED LOL" }
+		);
+		break;
+
+	case (ITEMLIST::ITEM_CLARENT):
+		return new ItemWeapon(
+			"Clarent", "Clarent", 400, Item::LEGENDARY,
+			{ 30, 25, 10, 3, 10 },
+			{ "A legendary sacred",
+			"sword. It supposed to",
+			"grand additional",
+			"abilities to kings,",
+			"but since you're not",
+			"one, it's just a powerfull",
+			"sword. "},
+			{ SkillFactory::SKILL_BLESSING_OF_SECONDARY_SWORD });
+		break;
+
+	case (ITEMLIST::ITEM_DEADBODIES):
+		return new Item(
+			"Junk", "Junk", 1, Item::OTHER, Item::COMMON,
+			{ "Whoever did it,",
+			  "has a silly sense",
+			"of humor..."}
 		);
 		break;
 
 	case (ITEMLIST::ITEM_CLAWS):
-		return new ItemWeapon("Claws", "Claws", 100, Item::COMMON, { 15, 5, 10, 1, 2 }, {});
+		return new ItemWeapon("Claws", "Claws", 100, Item::COMMON, { 15, 5, 10, 1, 2 }, {}, {});
 		break;
 
 	case (ITEMLIST::ITEM_DENSE_SKIN):
-		return new ItemArmor("Dense skin", "Dense skin", 100, Item::COMMON, { 15, 10 }, {});
+		return new ItemArmor("Dense skin", "Dense skin", 100, Item::COMMON, { 15, 10 }, {}, {});
 		break;
 
 	}

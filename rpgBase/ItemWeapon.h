@@ -15,5 +15,11 @@ class ItemWeapon :
 {
 public:
     WepStats stats;
-    ItemWeapon(string nName, string nShortName, int nPrice, Rarity nRarity, WepStats nStats, const vector<string>& nDescr, int nId = 0);
+    vector<SkillFactory::SkillList> linkedSkills;
+    ItemWeapon(string nName, string nShortName,
+        int nPrice, Rarity nRarity,
+        WepStats nStats,
+        const vector<string>& nDescr,
+        vector<SkillFactory::SkillList> nLinkedSkills,
+        int nId = 0);
 };

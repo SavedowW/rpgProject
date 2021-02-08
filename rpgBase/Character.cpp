@@ -93,6 +93,23 @@ bool Character::checkEffect(Buff::Buffs effect)
 	return false;
 }
 
+void Character::addSkill(SkillFactory::SkillList skillId)
+{
+	spells.push_back(SkillFactory::BuildSkill(skillId));
+}
+
+void Character::deleteSkill(SkillFactory::SkillList skillId)
+{
+	for (int i = 0; i < spells.size(); i++)
+	{
+		while (i < spells.size() && spells[i]->spellId == skillId)
+		{
+			delete spells[i];
+			spells.erase(spells.begin() + i);
+		}
+	}
+}
+
 float Character::getMagicalMultiplier()
 {
 	return (1.0 + float(bmPower) / 100.0);

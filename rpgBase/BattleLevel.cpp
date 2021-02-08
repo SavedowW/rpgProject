@@ -1,8 +1,8 @@
 #include "BattleLevel.h"
 #include "MessageHandler.h"
 
-BattleLevel::BattleLevel() :
-	Level({ 640, 360 }, new Camera({ 0, 0 }, { 640, 360 }, { 640, 360 }, Camera::SET))
+BattleLevel::BattleLevel(int nLevelId) :
+	Level({ 640, 360 }, new Camera({ 0, 0 }, { 640, 360 }, { 640, 360 }, Camera::SET), nLevelId)
 {
 	battleHud = new BattleHUD(gameCore, player);
 	backgrounds[0] = new Background1(gameCore);
@@ -310,10 +310,11 @@ void BattleLevel::handlePlayerAction()
 	else if (currentAction->action == CharacterAction::ITEM)
 	{
 		int selected = currentAction->id;
-		string name = player->inventory[selected]->name;
+		Item* selectedItem = player->inventory[selected];
+		string name = selectedItem->name;
 		int result = player->useItem(selected);
 
-		MessageHandler::itemMessage(result, name, selected, battleHud->messageBox, player);
+		MessageHandler::itemMessage(result, selectedItem, name, selected, battleHud->messageBox, player);
 	}
 
 	//Defend action

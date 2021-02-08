@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "Buff.h"
+#include "SkillFactory.h"
 
 using namespace std;
 

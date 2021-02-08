@@ -83,10 +83,11 @@ bool ElementInventoryMenu::inputEnter()
 		if (id == 0)
 		{
 			int selected = inventory->inputEnter();
-			string name = player->inventory[selected]->name;
+			Item* selectedItem = player->inventory[selected];
+			string name = selectedItem->name;
 			int result = player->useItem(selected);
 
-			MessageHandler::itemMessage(result, name, selected, messageBox, player);
+			MessageHandler::itemMessage(result, selectedItem, name, selected, messageBox, player);
 
 			reset();
 		}
@@ -192,18 +193,18 @@ bool ElementInventoryMenu::inputEnter()
 
 void ElementInventoryMenu::draw()
 {
-	gameCore->drawWindow(Vector2(10, 80), Vector2(200, 170));
+	gameCore->drawDarkWindow(Vector2(10, 80), Vector2(200, 170));
 	inventory->draw();
 
 	if (state >= MENU)
 	{
-		gameCore->drawWindow(Vector2(230, 110), Vector2(65, 110));
+		gameCore->drawDarkWindow(Vector2(230, 110), Vector2(65, 110));
 		menu->draw();
 	}
 
 	if (state >= INFO)
 	{
-		gameCore->drawWindow(Vector2(315, 80), Vector2(300, 170));
+		gameCore->drawDarkWindow(Vector2(315, 80), Vector2(300, 170));
 		currentInfo->draw(Vector2{330, 90});
 	}
 }

@@ -26,7 +26,7 @@ public:
 
     Chest* currentChest;
 
-    MapLevel(const Vector2 &nLvlSize, const Vector2 &nCamSize);
+    MapLevel(const Vector2 &nLvlSize, const Vector2 &nCamSize, int nLevelId);
 
     virtual void enter(int entrance);
     virtual LevelResult levelProcess();
@@ -38,6 +38,7 @@ protected:
     virtual void processInput(const SDL_Event& e);
     virtual void movePlayer();
     virtual void uniqueLogic();
+    virtual void beginBattle(Enemy* enemy, int battleId);
 
     virtual void pushMessage(const vector<vector<string>>& multilines, int font, int nPeriod, int nLinePeriod, int voiceId);
     void pushQuestionMultiselect(vector<string>* options, int** nTarget);

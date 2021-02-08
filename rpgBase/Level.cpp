@@ -1,11 +1,12 @@
 #include "Level.h"
 
-Level::Level(const Vector2& nSize, Camera* nCam)
+Level::Level(const Vector2& nSize, Camera* nCam, int nLevelId)
 {
 	size = nSize;
 	cam = nCam;
 	isRunning = false;
 	inputMethod = INPUT_DEFAULT;
+	levelId = nLevelId;
 }
 
 void Level::handleDelayedActions()

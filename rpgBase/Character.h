@@ -7,7 +7,7 @@
 //========================
 #pragma once
 #include "ItemTypeH.h"
-#include "Spell.h"
+#include "SkillFactory.h"
 
 struct CharacterAction
 {
@@ -52,6 +52,9 @@ public:
 
 	int receiveEffect(Buff effect);
 	bool checkEffect(Buff::Buffs effect);
+
+	void addSkill(SkillFactory::SkillList skillId);
+	void deleteSkill(SkillFactory::SkillList skillId);
 
 	float getMagicalMultiplier();
 

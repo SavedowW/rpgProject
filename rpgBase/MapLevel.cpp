@@ -1,7 +1,7 @@
 #include "MapLevel.h"
 
-MapLevel::MapLevel(const Vector2& nLvlSize, const Vector2& nCamSize):
-	Level(nLvlSize, new Camera({0, 0}, nCamSize, nLvlSize, Camera::LOCK))
+MapLevel::MapLevel(const Vector2& nLvlSize, const Vector2& nCamSize, int nLevelId):
+	Level(nLvlSize, new Camera({0, 0}, nCamSize, nLvlSize, Camera::LOCK), nLevelId)
 {
 	int timer = 0;
 	isRunning = false;
@@ -30,11 +30,29 @@ MapLevel::MapLevel(const Vector2& nLvlSize, const Vector2& nCamSize):
 
 void MapLevel::enter(int entrance)
 {
+	//Player properly enter location
 	if (entrance != -1)
+	{
 		player->pos = spawnPoints[entrance];
+	}
+
+	//Player returns after battle
+	else
+	{
+		//Any regular battles
+		if (battleRequest.battleId == 0)
+		{
+			delete battleRequest.enemy;
+		}
+
+		//Place specific ID's here
+	}
+
 	gameCore->setCam(cam);
+
 	isRunning = true;
 	returnVal = { -1, 0 };
+
 	timer = transitionPeriod + 1;
 	state = ENTER;
 	inputMethod = INPUT_DEFAULT;
@@ -354,6 +372,30 @@ void MapLevel::pushMessage(const vector<vector<string>>& multilines, int font, i
 void MapLevel::uniqueLogic()
 {
 	
+}
+
+void MapLevel::beginBattle(Enemy* enemy, int battleId)
+{
+	battleRequest.enemy = new Wyvern(gameCore);
+	battleRequest.srcLevel = 1;
+	battleRequest.battleId = 0;
+
+	battleRequest.enemy = enemy;
+	battleRequest.srcLevel = levelId;
+	battleRequest.battleId = battleId;
+
+	inputMethod = INPUT_NOINPUT;
+	player->stop();
+	gameCore->playSfx(GameCore::SFX_BATTLEBEGIN_P1);
+
+	actionList.push_back(new TimerAction(30,
+		[this]()
+		{
+			gameCore->playSfx(GameCore::SFX_BATTLEBEGIN_P2);
+			state = LEAVEBATTLE;
+			returnVal = { 0, 0 };
+		}
+	));
 }
 
 void MapLevel::pushQuestionMultiselect(vector<string>* options, int** nTarget)

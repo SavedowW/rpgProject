@@ -72,9 +72,6 @@ public:
 	int removeItem(int id);
 	int gainExp(int nExp);
 
-	void learnSkill(Spell* spell);
-	void removeSkill(int rId);
-
 	SDL_Texture* getSprite();
 
 	void update();

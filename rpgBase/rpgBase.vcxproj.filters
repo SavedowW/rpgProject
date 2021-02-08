@@ -139,9 +139,6 @@
     <Filter Include="HUD\BattleHUD">
       <UniqueIdentifier>{1eaf49b2-7436-48fc-b494-58bf57f39cbe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="HUD\Elements\ElementBattleMessageBox">
-      <UniqueIdentifier>{a72c8cd2-bd79-4355-ad43-4971fa33eb76}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Levels\BattleLevel\BattleBackgrounds">
       <UniqueIdentifier>{337688b5-9da2-41a4-9819-cbc7f28fde30}</UniqueIdentifier>
     </Filter>
@@ -162,6 +159,9 @@
     </Filter>
     <Filter Include="Loaded">
       <UniqueIdentifier>{acb61ee6-1e3e-4f12-9911-715da2748241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Spells\SkillFactory">
+      <UniqueIdentifier>{a0c90998-43eb-488b-98ab-d642fd999f2f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -267,9 +267,6 @@
     <ClCompile Include="BattleHUD.cpp">
       <Filter>HUD\BattleHUD</Filter>
     </ClCompile>
-    <ClCompile Include="ElementBattleMessageBox.cpp">
-      <Filter>HUD\Elements\ElementBattleMessageBox</Filter>
-    </ClCompile>
     <ClCompile Include="Background.cpp">
       <Filter>Levels\BattleLevel\BattleBackgrounds\Background</Filter>
     </ClCompile>
@@ -288,7 +285,19 @@
     <ClCompile Include="ItemTypeH.cpp">
       <Filter>Items\ItemTypes</Filter>
     </ClCompile>
+    <ClCompile Include="Blader.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
     <ClCompile Include="Chest1.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Darkness.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Floor.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Floor_cBottomDuo.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
     <ClCompile Include="Floor_cLeft.cpp">
@@ -297,68 +306,110 @@
     <ClCompile Include="Floor_cRight.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
-    <ClCompile Include="Floor1.cpp">
+    <ClCompile Include="MapLevel0.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
-    <ClCompile Include="MapLevel0.cpp">
+    <ClCompile Include="MapLevel1.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="MapLevel2.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Monitor.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Trashcan1.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_bottom.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cLeftIn_bottom.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cLeftIn_middle.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cLeftIn_top.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cLeftOut_bottom.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cLeftOut_middle.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cLeftOut_top.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cRightIn_bottom.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cRightIn_middle.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cRightIn_top.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cRightOut_bottom.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cRightOut_middle.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_cRightOut_top.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_high_bDuo.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
     <ClCompile Include="Wall_high_bLeft.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
+    <ClCompile Include="Wall_high_bottom.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
     <ClCompile Include="Wall_high_bRight.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall_high_lBottom.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
     <ClCompile Include="Wall_high_left.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
-    <ClCompile Include="Wall_high_out_lBottom.cpp">
+    <ClCompile Include="Wall_high_lTop.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
-    <ClCompile Include="Wall_high_out_lTop.cpp">
-      <Filter>Loaded</Filter>
-    </ClCompile>
-    <ClCompile Include="Wall_high_out_rBottom.cpp">
-      <Filter>Loaded</Filter>
-    </ClCompile>
-    <ClCompile Include="Wall_high_out_rTop.cpp">
+    <ClCompile Include="Wall_high_rBottom.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
     <ClCompile Include="Wall_high_right.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
+    <ClCompile Include="Wall_high_rTop.cpp">
+      <Filter>Loaded</Filter>
+    </ClCompile>
     <ClCompile Include="Wall_high_top.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
-    <ClCompile Include="Wall_in_left_bottom.cpp">
+    <ClCompile Include="Wall_in_duo_bottom.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
-    <ClCompile Include="Wall_in_left_top.cpp">
+    <ClCompile Include="Wall_in_duo_middle.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
-    <ClCompile Include="Wall_in_right_bottom.cpp">
+    <ClCompile Include="Wall_in_duo_top.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
-    <ClCompile Include="Wall_in_right_top.cpp">
+    <ClCompile Include="Wall_middle.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
-    <ClCompile Include="Wall_middle_bottom.cpp">
+    <ClCompile Include="Wall_top.cpp">
       <Filter>Loaded</Filter>
     </ClCompile>
-    <ClCompile Include="Wall_middle_top.cpp">
-      <Filter>Loaded</Filter>
-    </ClCompile>
-    <ClCompile Include="Wall_out_left_bottom.cpp">
-      <Filter>Loaded</Filter>
-    </ClCompile>
-    <ClCompile Include="Wall_out_left_top.cpp">
-      <Filter>Loaded</Filter>
-    </ClCompile>
-    <ClCompile Include="Wall_out_right_bottom.cpp">
-      <Filter>Loaded</Filter>
-    </ClCompile>
-    <ClCompile Include="Wall_out_right_top.cpp">
-      <Filter>Loaded</Filter>
+    <ClCompile Include="SkillFactory.cpp">
+      <Filter>Spells\SkillFactory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -470,9 +521,6 @@
     <ClInclude Include="BattleHUD.h">
       <Filter>HUD\BattleHUD</Filter>
     </ClInclude>
-    <ClInclude Include="ElementBattleMessageBox.h">
-      <Filter>HUD\Elements\ElementBattleMessageBox</Filter>
-    </ClInclude>
     <ClInclude Include="Background.h">
       <Filter>Levels\BattleLevel\BattleBackgrounds\Background</Filter>
     </ClInclude>
@@ -494,7 +542,19 @@
     <ClInclude Include="DelayedAction.h">
       <Filter>Levels</Filter>
     </ClInclude>
+    <ClInclude Include="Blader.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
     <ClInclude Include="Chest1.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Darkness.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Floor.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Floor_cBottomDuo.h">
       <Filter>Loaded</Filter>
     </ClInclude>
     <ClInclude Include="Floor_cLeft.h">
@@ -503,68 +563,110 @@
     <ClInclude Include="Floor_cRight.h">
       <Filter>Loaded</Filter>
     </ClInclude>
-    <ClInclude Include="Floor1.h">
+    <ClInclude Include="MapLevel0.h">
       <Filter>Loaded</Filter>
     </ClInclude>
-    <ClInclude Include="MapLevel0.h">
+    <ClInclude Include="MapLevel1.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="MapLevel2.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Monitor.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Trashcan1.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_bottom.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cLeftIn_bottom.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cLeftIn_middle.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cLeftIn_top.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cLeftOut_bottom.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cLeftOut_middle.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cLeftOut_top.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cRightIn_bottom.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cRightIn_middle.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cRightIn_top.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cRightOut_bottom.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cRightOut_middle.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_cRightOut_top.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_high_bDuo.h">
       <Filter>Loaded</Filter>
     </ClInclude>
     <ClInclude Include="Wall_high_bLeft.h">
       <Filter>Loaded</Filter>
     </ClInclude>
+    <ClInclude Include="Wall_high_bottom.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
     <ClInclude Include="Wall_high_bRight.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall_high_lBottom.h">
       <Filter>Loaded</Filter>
     </ClInclude>
     <ClInclude Include="Wall_high_left.h">
       <Filter>Loaded</Filter>
     </ClInclude>
-    <ClInclude Include="Wall_high_out_lBottom.h">
+    <ClInclude Include="Wall_high_lTop.h">
       <Filter>Loaded</Filter>
     </ClInclude>
-    <ClInclude Include="Wall_high_out_lTop.h">
-      <Filter>Loaded</Filter>
-    </ClInclude>
-    <ClInclude Include="Wall_high_out_rBottom.h">
-      <Filter>Loaded</Filter>
-    </ClInclude>
-    <ClInclude Include="Wall_high_out_rTop.h">
+    <ClInclude Include="Wall_high_rBottom.h">
       <Filter>Loaded</Filter>
     </ClInclude>
     <ClInclude Include="Wall_high_right.h">
       <Filter>Loaded</Filter>
     </ClInclude>
+    <ClInclude Include="Wall_high_rTop.h">
+      <Filter>Loaded</Filter>
+    </ClInclude>
     <ClInclude Include="Wall_high_top.h">
       <Filter>Loaded</Filter>
     </ClInclude>
-    <ClInclude Include="Wall_in_left_bottom.h">
+    <ClInclude Include="Wall_in_duo_bottom.h">
       <Filter>Loaded</Filter>
     </ClInclude>
-    <ClInclude Include="Wall_in_left_top.h">
+    <ClInclude Include="Wall_in_duo_middle.h">
       <Filter>Loaded</Filter>
     </ClInclude>
-    <ClInclude Include="Wall_in_right_bottom.h">
+    <ClInclude Include="Wall_in_duo_top.h">
       <Filter>Loaded</Filter>
     </ClInclude>
-    <ClInclude Include="Wall_in_right_top.h">
+    <ClInclude Include="Wall_middle.h">
       <Filter>Loaded</Filter>
     </ClInclude>
-    <ClInclude Include="Wall_middle_bottom.h">
+    <ClInclude Include="Wall_top.h">
       <Filter>Loaded</Filter>
     </ClInclude>
-    <ClInclude Include="Wall_middle_top.h">
-      <Filter>Loaded</Filter>
-    </ClInclude>
-    <ClInclude Include="Wall_out_left_bottom.h">
-      <Filter>Loaded</Filter>
-    </ClInclude>
-    <ClInclude Include="Wall_out_left_top.h">
-      <Filter>Loaded</Filter>
-    </ClInclude>
-    <ClInclude Include="Wall_out_right_bottom.h">
-      <Filter>Loaded</Filter>
-    </ClInclude>
-    <ClInclude Include="Wall_out_right_top.h">
-      <Filter>Loaded</Filter>
+    <ClInclude Include="SkillFactory.h">
+      <Filter>Spells\SkillFactory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

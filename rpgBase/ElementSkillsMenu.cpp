@@ -103,12 +103,12 @@ bool ElementSkillsMenu::inputEnter()
 
 void ElementSkillsMenu::draw()
 {
-	gameCore->drawWindow(Vector2(10, 80), Vector2(220, 170));
+	gameCore->drawDarkWindow(Vector2(10, 80), Vector2(220, 170));
 	skills->draw();
 
 	if (state == INFO)
 	{
-		gameCore->drawWindow(Vector2(250, 80), Vector2(360, 170));
+		gameCore->drawDarkWindow(Vector2(250, 80), Vector2(360, 170));
 		currentInfo->draw(Vector2(270, 90));
 	}
 }

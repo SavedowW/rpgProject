@@ -4,7 +4,7 @@ ElementMessageBox::ElementMessageBox(GameCore* nGameCore, const Vector2& nPos, c
 {
 	pos = nPos;
 	size.x = 640 - pos.x * 2 - 16;
-	size.y = 360 - pos.y - 16 - 20;
+	size.y = 54;
 
 	gameCore = nGameCore;
 	enabled = false;
@@ -43,7 +43,7 @@ void ElementMessageBox::draw()
 {
 	if (enabled)
 	{
-		gameCore->drawWindow(pos, size);
+		gameCore->drawDarkWindow(pos, size);
 		if (currentMessage->request == Message::RQ_MESSAGE)
 		{
 			currentMessage->text->draw(pos + Vector2{ 12.0f, 7.0f });

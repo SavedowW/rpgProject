@@ -10,7 +10,7 @@ Wall_high_left::Wall_high_left(const Vector2& nPos) :
 
     int w, h;
 	SDL_QueryTexture(spr_idle, NULL, NULL, &w, &h);
-	depth = pos.y + h;
+	depth = 1000000;
 }
 
 SDL_Texture* Wall_high_left::getSprite()

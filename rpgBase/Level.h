@@ -77,7 +77,7 @@ struct BattleRequest
 class Level
 {
 public:
-	Level(const Vector2 &nSize, Camera* nCam);
+	Level(const Vector2& nSize, Camera* nCam, int nLevelId);
 
 	virtual void enter(int entrance) = 0;
 	virtual LevelResult levelProcess() = 0;
@@ -91,6 +91,8 @@ protected:
 	virtual void processInput(const SDL_Event& e) = 0;
 	virtual void handleDelayedActions();
 	
+	int levelId;
+
 	enum InputMethod { INPUT_DEFAULT, INPUT_HUD, INPUT_NOINPUT } inputMethod;
 
 	vector<DelayedAction*> actionList;

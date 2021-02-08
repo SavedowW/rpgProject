@@ -111,22 +111,22 @@ bool ElementChestMenu::inputEnter()
 void ElementChestMenu::draw()
 {
 	//Main windows
-	gameCore->drawWindow(Vector2(15, 80), Vector2(274, 170));
-	gameCore->drawWindow(Vector2(335, 80), Vector2(274, 170));
+	gameCore->drawDarkWindow(Vector2(15, 80), Vector2(274, 170));
+	gameCore->drawDarkWindow(Vector2(335, 80), Vector2(274, 170));
 
 	//Inventories
 	pInv->draw();
 	cInv->draw();
 
 	//Player title
-	gameCore->drawWindow(Vector2(15, 50), Vector2(100, 20));
+	gameCore->drawDarkWindow(Vector2(15, 50), Vector2(100, 20));
 	if (state == PLAYER)
 		gameCore->quickDrawText(player->name.c_str(), Vector2(73, 68), 8, GameCore::VCENTER, GameCore::HCENTER);
 	else
 		gameCore->quickDrawText(player->name.c_str(), Vector2(73, 68), 7, GameCore::VCENTER, GameCore::HCENTER);
 
 	//Chest title
-	gameCore->drawWindow(Vector2(509, 50), Vector2(100, 20));
+	gameCore->drawDarkWindow(Vector2(509, 50), Vector2(100, 20));
 	if (state == CHEST)
 		gameCore->quickDrawText("Chest", Vector2(567, 68), 8, GameCore::VCENTER, GameCore::HCENTER);
 	else

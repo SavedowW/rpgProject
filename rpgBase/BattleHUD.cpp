@@ -8,7 +8,7 @@ BattleHUD::BattleHUD(GameCore* nGameCore, Player* nPlayer)
 	baseState = CLOSED;
 	state = MAINMENU;
 
-	messageBox = new ElementBattleMessageBox(gameCore, { 30.0f, 270.0f },
+	messageBox = new ElementMessageBox(gameCore, { 30.0f, 270.0f },
 		{ gameCore->loadSfx("SFX/voices/voice_system.wav", 60)});
 
 	messageBoxOpened = &messageBox->enabled;
@@ -58,7 +58,7 @@ CharacterAction* BattleHUD::proceedInput(const SDL_Event& e)
 		if (messageBox->enabled)
 		{
 			if (e.key.keysym.sym == SDLK_z)
-				messageBox->input();
+				messageBox->inputEnter();
 			return new CharacterAction();
 		}
 	}

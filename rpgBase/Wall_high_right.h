@@ -4,7 +4,7 @@
 class Wall_high_right : 
     public Object
 {
-Public:
+public:
     Wall_high_right(const Vector2 & nPos);
     SDL_Texture* getSprite();
 

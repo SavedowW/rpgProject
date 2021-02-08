@@ -19,12 +19,7 @@ Wyvern::Wyvern(GameCore* nGameCore)
 	weapon = (ItemWeapon*)BuildItem(ITEMLIST::ITEM_CLAWS);
 	armor = (ItemArmor*)BuildItem(ITEMLIST::ITEM_DENSE_SKIN);
 
-	spells.push_back(new Spell(
-		"Ultima",
-		{ {Buff::OT_CURSE, 10, Buff::ENEMY, 3}, {Buff::OT_HPREGEN, 10, Buff::SELF, 4} }, 10,
-		{ {"Broken spell activated" } },
-		{ "Not required." })
-	);
+	addSkill(SkillFactory::SKILL_ULTIMA);
 
 	int w, h;
 	if (spr_idle == NULL)
