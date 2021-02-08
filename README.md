@@ -19,5 +19,10 @@ HUD is the worst part of this code. I thought it's gonna be small, but it seems 
 to make a big interface and make it just like a whole sub-level and now it's insanely hard to edit and expand.
 I would be glad if somebody will give some info about good HUD architecture in this situation, I don't think it's effective to use regular
 windows-like system (keep many windows at once, one is focused and catches input) or state system (sometimes i show many menus at once, sometimes I don't).
-Besides, player is supposed to do lots of things through the HUD (inventory / chest managemend, skill description / usage of heal, restore, etc, growth (not done yes)) so
+Besides, player is supposed to do lots of things through the HUD (inventory / chest management, skill description / usage of heal, restore, etc, growth (not done yes)) so
 sending requests to the level is not effective as well.
+
+I'll describe all changes here
+
+=== 08.02.2021 ===
+Changed all HUD to dark, added SkillsFactory, removed all skill constructors from other code, got rid of BattleMessageBox (which was an outdated copy of MessageBox), added a proper beginBattle and beginBattleInstantly functions, changed weapon equip logic and weapon class, created a new demo map with battle on trigger, weapon with unique spells, secret route and battle on trigger.
