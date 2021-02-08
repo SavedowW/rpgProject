@@ -25,4 +25,5 @@ sending requests to the level is not effective as well.
 I'll describe all changes here
 
 === 08.02.2021 ===
+
 Changed all HUD to dark, added SkillsFactory, removed all skill constructors from other code, got rid of BattleMessageBox (which was an outdated copy of MessageBox), added a proper beginBattle and beginBattleInstantly functions, changed weapon equip logic and weapon class, created a new demo map with battle on trigger, weapon with unique spells, secret route and battle on trigger.
