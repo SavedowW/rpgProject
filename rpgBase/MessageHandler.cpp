@@ -3,7 +3,7 @@
 void MessageHandler::itemMessage(int result, Item* item, string name, int selected, ElementMessageBox* messageBox, Player* player)
 {
 	//Other
-	if (result == 0)
+	if (result % 10 == 0)
 		messageBox->pushMessages(
 			{
 					{"How do you expect me to use " + name + "?"}
@@ -11,7 +11,7 @@ void MessageHandler::itemMessage(int result, Item* item, string name, int select
 		);
 
 	//Weapon
-	else if (result == 1)
+	else if (result % 10 == 1)
 	{
 		messageBox->pushMessages(
 			{
@@ -32,7 +32,7 @@ void MessageHandler::itemMessage(int result, Item* item, string name, int select
 	}
 
 	//Armor
-	else if (result == 2)
+	else if (result % 10 == 2)
 		messageBox->pushMessages(
 			{
 					{"You have equipped a new armor!", player->inventory[selected]->name + " returned to your inventory."}
@@ -40,7 +40,7 @@ void MessageHandler::itemMessage(int result, Item* item, string name, int select
 		);
 
 	//Buffer
-	else if (result == 3)
+	else if (result % 10 == 3)
 		messageBox->pushMessages(
 			{
 				{"You have used a " + name + "."}

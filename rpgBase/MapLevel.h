@@ -39,6 +39,7 @@ protected:
     virtual void movePlayer();
     virtual void uniqueLogic();
     virtual void beginBattle(Enemy* enemy, int battleId);
+    virtual void beginBattleInstantly(Enemy* enemy, int battleId);
 
     virtual void pushMessage(const vector<vector<string>>& multilines, int font, int nPeriod, int nLinePeriod, int voiceId);
     void pushQuestionMultiselect(vector<string>* options, int** nTarget);

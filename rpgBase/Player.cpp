@@ -99,7 +99,7 @@ int Player::useItem(int id)
 		if (itemId == 0)
 			return 0;
 		else
-			return itemId;
+			return itemId * 10;
 
 	} else if (inventory[id]->type == Item::WEAPON) {
 		ItemWeapon* temp = (ItemWeapon*)(inventory[id]);
@@ -123,7 +123,7 @@ int Player::useItem(int id)
 		if (itemId == 0)
 			return 1;
 		else
-			return itemId;
+			return itemId * 10 + 1;
 
 	} else if (inventory[id]->type == Item::ARMOR) {
 		ItemArmor* temp = (ItemArmor*)(inventory[id]);
@@ -132,7 +132,7 @@ int Player::useItem(int id)
 		if (itemId == 0)
 			return 2;
 		else
-			return itemId;
+			return itemId * 10 + 2;
 
 	} else if (inventory[id]->type == Item::BUFFER) {
 		for (int i = 0; i < ((ItemBuffer*)inventory[id])->effects.size(); i++)
@@ -144,7 +144,7 @@ int Player::useItem(int id)
 		if (itemId == 0)
 			return 3;
 		else
-			return itemId;
+			return itemId * 10 + 3;
 
 	}
 	return 0;
@@ -152,9 +152,10 @@ int Player::useItem(int id)
 
 int Player::removeItem(int id)
 {
+	int itemId = inventory[id]->itemId;
 	delete inventory[id];
 	inventory.erase(inventory.begin() + id);
-	return 0;
+	return itemId;
 }
 
 int Player::gainExp(int nExp)

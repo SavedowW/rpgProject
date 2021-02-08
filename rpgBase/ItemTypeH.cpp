@@ -60,10 +60,10 @@ Item* BuildItem(ITEMLIST itemId)
 
 	case (ITEMLIST::ITEM_DEADBODIES):
 		return new Item(
-			"Junk", "Junk", 1, Item::OTHER, Item::COMMON,
+			"Dead bodies", "Deads", 1, Item::OTHER, Item::COMMON,
 			{ "Whoever did it,",
 			  "has a silly sense",
-			"of humor..."}
+			"of humor..."}, 4
 		);
 		break;
 

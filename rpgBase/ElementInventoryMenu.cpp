@@ -185,6 +185,13 @@ bool ElementInventoryMenu::inputEnter()
 					}, 5, 5, 10, 0
 				);
 
+			else if (result == 4)
+				messageBox->pushMessages(
+					{
+							{"You leave dead bodies", "somewhere far from you."}
+					}, 5, 5, 10, 0
+				);
+
 			reset();
 		}
 		return true;

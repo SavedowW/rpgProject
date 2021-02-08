@@ -376,26 +376,30 @@ void MapLevel::uniqueLogic()
 
 void MapLevel::beginBattle(Enemy* enemy, int battleId)
 {
-	battleRequest.enemy = new Wyvern(gameCore);
-	battleRequest.srcLevel = 1;
-	battleRequest.battleId = 0;
-
-	battleRequest.enemy = enemy;
-	battleRequest.srcLevel = levelId;
-	battleRequest.battleId = battleId;
-
 	inputMethod = INPUT_NOINPUT;
 	player->stop();
 	gameCore->playSfx(GameCore::SFX_BATTLEBEGIN_P1);
 
 	actionList.push_back(new TimerAction(30,
-		[this]()
+		[this, enemy, battleId]()
 		{
-			gameCore->playSfx(GameCore::SFX_BATTLEBEGIN_P2);
-			state = LEAVEBATTLE;
-			returnVal = { 0, 0 };
+			beginBattleInstantly(enemy, battleId);
 		}
 	));
+}
+
+void MapLevel::beginBattleInstantly(Enemy* enemy, int battleId)
+{
+	inputMethod = INPUT_NOINPUT;
+	player->stop();
+
+	battleRequest.enemy = enemy;
+	battleRequest.srcLevel = levelId;
+	battleRequest.battleId = battleId;
+
+	gameCore->playSfx(GameCore::SFX_BATTLEBEGIN_P2);
+	state = LEAVEBATTLE;
+	returnVal = { 0, 0 };
 }
 
 void MapLevel::pushQuestionMultiselect(vector<string>* options, int** nTarget)
