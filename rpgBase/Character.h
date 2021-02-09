@@ -20,11 +20,8 @@ struct CharacterAction
 	}
 };
 
-class Character
+struct CharacterStats
 {
-public:
-	string name;
-
 	int HP;
 	int MP;
 	int maxHP;
@@ -34,6 +31,14 @@ public:
 	int bmPower; //base magical power
 	int bpResist; //base physical resist
 	int bmResist; //base magical resist
+};
+
+class Character
+{
+public:
+	string name;
+
+	CharacterStats stats;
 
 	vector<Spell*> spells;
 
@@ -43,6 +48,9 @@ public:
 	vector<Buff> buffs;
 
 	bool block;
+
+	virtual void addHp(int addVal);
+	virtual void addMp(int addVal);
 
 	int calcPhysDamage();
 	int receivePhysDamage(int damage, int mayBeParried = true);

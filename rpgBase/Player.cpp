@@ -2,21 +2,14 @@
 
 int getLimitedInput(int lowerEdge, int higherEdge);
 
-
 Player::Player(const Vector2& nPos) :
 	Object(nPos)
 {
+	prepareLevels();
+
 	name = "Altrei";
 
-	maxHP = 100;
-	maxMP = 30;
-	HP = maxHP;
-	MP = maxMP;
-
-	bpDamage = 30;
-	bmPower = 10;
-	bpResist = 15;
-	bmResist = 20;
+	stats = levels[1].levelStats;
 
 	block = false;
 
@@ -24,39 +17,11 @@ Player::Player(const Vector2& nPos) :
 	lvl = 1;
 
 	spells.push_back(SkillFactory::BuildSkill(SkillFactory::SKILL_HEAL));
-	spells.push_back(new Spell(
-		"Firestorm",
-		{ {Buff::INSTANT_MAGICAL_DAMAGE, 50, Buff::ENEMY} }, 15,
-		{ {"A merciless fire absorbs everything around you.", "There is no way to dodge this spell." } },
-		{"A complicated spell that",
-		"summons a firestorm. Yes,",
-		"it's a summon spell, not a",
-		"manifestation one. Hell is",
-		"full of this storms so no",
-		"one would notice this loss...",
-		"And they don't even care about",
-		"it."})
-	);
-	spells.push_back(new Spell(
-		"Vampire's bite",
-		{ {Buff::INSTANT_PHYSICAL_DAMAGE, 20, Buff::ENEMY}, {Buff::INSTANT_HP_RESTORE, 5, Buff::SELF} }, 3,
-		{ {"You're quickly jump to the enemy", "and put your fangs into his neck." } },
-		{"A legacy of your vampire roots.",
-		"It's a basic skill, avaible",
-		"for all vampires."})
-	);
-	spells.push_back(new Spell(
-		"Ultima",
-		{ {Buff::OT_CURSE, 10, Buff::ENEMY, 3}, {Buff::OT_HPREGEN, 10, Buff::SELF, 4} }, 10,
-		{ {"Broken spell activated" } },
-		{ "Not required." })
-	);
-	spells.push_back(new Spell(
-		"Soul protection",
-		{ {Buff::OT_SOULPROTECTION, 1, Buff::SELF, 2} }, 10,
-		{ {"Blessed spell activated" } },
-		{ "Not required." })
-	);
+	spells.push_back(SkillFactory::BuildSkill(SkillFactory::SKILL_FIRESTORM));
+	spells.push_back(SkillFactory::BuildSkill(SkillFactory::SKILL_VAMPBITE));
+	spells.push_back(SkillFactory::BuildSkill(SkillFactory::SKILL_ULTIMA));
+	spells.push_back(SkillFactory::BuildSkill(SkillFactory::SKILL_SOULPROTECTION));
+	spells.push_back(SkillFactory::BuildSkill(SkillFactory::SKILL_SOULPROTECTION));
 
 	weapon = new ItemWeapon(
 		"Steel sword", "Steel sword", 50, Item::COMMON,
@@ -158,19 +123,27 @@ int Player::removeItem(int id)
 	return itemId;
 }
 
-int Player::gainExp(int nExp)
+vector<PlayerLevel> Player::gainExp(int nExp)
 {
-	if (exp < 10 && exp + nExp >= 10 ||
-		exp < 20 && exp + nExp >= 20)
-	{
-		exp += nExp;
-		++lvl;
-		return lvl;
-	}
+	vector<PlayerLevel> newLevels;
+
+	if (lvl == MAXLVL)
+		return {};
 	else
 	{
 		exp += nExp;
-		return 0;
+		for (int i = lvl + 1; i <= MAXLVL; ++i)
+		{
+			if (exp >= levels[i].minExp)
+			{
+				stats = levels[i].levelStats;
+				newLevels.push_back(levels[i]);
+				lvl = i;
+			}
+		}
+		if (lvl == MAXLVL)
+			exp = levels[MAXLVL].minExp;
+		return newLevels;
 	}
 }
 
@@ -197,4 +170,90 @@ void Player::updateHBox()
 void Player::stop()
 {
 	movement.velocity = { 0, 0 };
+}
+
+void Player::prepareLevels()
+{
+	levels[0].lvl = 0;
+	levels[0].minExp = 0;
+
+	levels[0].levelStats.maxHP = 0;
+	levels[0].levelStats.maxMP = 0;
+	levels[0].levelStats.HP = levels[0].levelStats.maxHP;
+	levels[0].levelStats.MP = levels[0].levelStats.maxMP;
+
+	levels[0].levelStats.bpDamage = 0;
+	levels[0].levelStats.bmPower = 0;
+	levels[0].levelStats.bpResist = 0;
+	levels[0].levelStats.bmResist = 0;
+
+	//Level 1
+	levels[1].lvl = 1;
+	levels[1].minExp = 1;
+
+	levels[1].levelStats.maxHP = 100;
+	levels[1].levelStats.maxMP = 30;
+	levels[1].levelStats.HP = levels[1].levelStats.maxHP;
+	levels[1].levelStats.MP = levels[1].levelStats.maxMP;
+
+	levels[1].levelStats.bpDamage = 30;
+	levels[1].levelStats.bmPower = 10;
+	levels[1].levelStats.bpResist = 15;
+	levels[1].levelStats.bmResist = 20;
+
+	//Level 2
+	levels[2].lvl = 2;
+	levels[2].minExp = 10;
+
+	levels[2].levelStats.maxHP = 110;
+	levels[2].levelStats.maxMP = 35;
+	levels[2].levelStats.HP = levels[2].levelStats.maxHP;
+	levels[2].levelStats.MP = levels[2].levelStats.maxMP;
+
+	levels[2].levelStats.bpDamage = 35;
+	levels[2].levelStats.bmPower = 12;
+	levels[2].levelStats.bpResist = 16;
+	levels[2].levelStats.bmResist = 20;
+
+	//Level 3
+	levels[3].lvl = 3;
+	levels[3].minExp = 30;
+
+	levels[3].levelStats.maxHP = 120;
+	levels[3].levelStats.maxMP = 40;
+	levels[3].levelStats.HP = levels[3].levelStats.maxHP;
+	levels[3].levelStats.MP = levels[3].levelStats.maxMP;
+
+	levels[3].levelStats.bpDamage = 40;
+	levels[3].levelStats.bmPower = 14;
+	levels[3].levelStats.bpResist = 18;
+	levels[3].levelStats.bmResist = 24;
+
+	//Level 4
+	levels[4].lvl = 4;
+	levels[4].minExp = 65;
+
+	levels[4].levelStats.maxHP = 130;
+	levels[4].levelStats.maxMP = 45;
+	levels[4].levelStats.HP = levels[4].levelStats.maxHP;
+	levels[4].levelStats.MP = levels[4].levelStats.maxMP;
+
+	levels[4].levelStats.bpDamage = 40;
+	levels[4].levelStats.bmPower = 18;
+	levels[4].levelStats.bpResist = 20;
+	levels[4].levelStats.bmResist = 24;
+
+	//Level 5
+	levels[5].lvl = 5;
+	levels[5].minExp = 100;
+
+	levels[5].levelStats.maxHP = 140;
+	levels[5].levelStats.maxMP = 50;
+	levels[5].levelStats.HP = levels[5].levelStats.maxHP;
+	levels[5].levelStats.MP = levels[5].levelStats.maxMP;
+
+	levels[5].levelStats.bpDamage = 44;
+	levels[5].levelStats.bmPower = 20;
+	levels[5].levelStats.bpResist = 22;
+	levels[5].levelStats.bmResist = 26;
 }

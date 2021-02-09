@@ -33,7 +33,7 @@ protected:
     void handleEffectFrom(BattleCharacter user, const Buff& effect);
     void handleEffectTo(BattleCharacter tar, const Buff& effect);
 
-    enum LevelState { ENTER, RUN, LEAVE, LEAVEBATTLE } state;
+    enum LevelState { ENTER, RUN, END, LEAVE } state;
     enum BattleState {ENTERSTATE, PLAYERTURN, PLAYERSKILLPARSE, PLAYERTURNRES, PLAYERTURNEND, ENEMYTURN, ENEMYSKILLPARSE, ENEMYTURNRES, ENEMYTURNEND, RESULTS} battleState;
 
     Spell* currentSkill;

@@ -37,17 +37,10 @@ LevelResult BattleLevel::levelProcess()
 
 		handleDelayedActions();
 
-		//Begin leaving animation
-		if (state == RUN && battleState == RESULTS && !*battleHud->messageBoxOpened && actionList.size() == 0)
-		{
-			state = LEAVE;
-		}
-
 		if (state == RUN)
 		{
 
-			//Battle end
-			if (!*battleHud->messageBoxOpened)
+			if (player->stats.HP <= 0 || battleRequest.enemy->stats.HP <= 0)
 			{
 				handleEnd();
 			}
@@ -116,6 +109,14 @@ LevelResult BattleLevel::levelProcess()
 				handleEnemyEffects();
 			}
 
+		}
+
+		if (state == END)
+		{
+			if (!*battleHud->messageBoxOpened && actionList.size() <= 0)
+			{
+				state = LEAVE;
+			}
 		}
 
 		//PRE-DRAWING
@@ -189,8 +190,8 @@ void BattleLevel::renderLevel()
 		}
 	}
 
-	gameCore->quickDrawText(("Player: " + gameCore->intToString(player->HP) + " / " + gameCore->intToString(player->MP)).c_str(), { 0, 0 }, 9, GameCore::TOP, GameCore::LEFT);
-	gameCore->quickDrawText((battleRequest.enemy->name + ": " + gameCore->intToString(battleRequest.enemy->HP) + " / " + gameCore->intToString(battleRequest.enemy->MP)).c_str(), { 0, 20 }, 9, GameCore::TOP, GameCore::LEFT);
+	gameCore->quickDrawText(("Player: " + gameCore->intToString(player->stats.HP) + " / " + gameCore->intToString(player->stats.MP)).c_str(), { 0, 0 }, 9, GameCore::TOP, GameCore::LEFT);
+	gameCore->quickDrawText((battleRequest.enemy->name + ": " + gameCore->intToString(battleRequest.enemy->stats.HP) + " / " + gameCore->intToString(battleRequest.enemy->stats.MP)).c_str(), { 0, 20 }, 9, GameCore::TOP, GameCore::LEFT);
 
 	battleHud->draw();
 	gameCore->updateScreen();
@@ -198,10 +199,11 @@ void BattleLevel::renderLevel()
 
 void BattleLevel::handleEnd()
 {
+	state = END;
+
 	//Loose
-	if (player->HP <= 0)
+	if (player->stats.HP <= 0)
 	{
-		battleState = RESULTS;
 		returnVal = { battleRequest.srcLevel, -1 };
 		battleHud->pushMessage({
 					{"You lost!"}
@@ -209,41 +211,86 @@ void BattleLevel::handleEnd()
 	}
 
 	//Win
-	else if (battleRequest.enemy->HP <= 0)
+	else if (battleRequest.enemy->stats.HP <= 0)
 	{
-		battleState = RESULTS;
 		returnVal = { battleRequest.srcLevel, -1 };
 
 		int expUp = battleRequest.enemy->getExp();
 		cout << expUp << endl;
-		int lvlUp = player->gainExp(expUp);
-		cout << lvlUp << endl;
-		cout << player->exp << endl << endl;
+		vector <PlayerLevel> lvlUp = player->gainExp(expUp);
 
 		const vector<Item*>& droplist = battleRequest.enemy->reward();
+
 
 		battleHud->pushMessage({
 					{"You won!", "Gained " + gameCore->intToString(expUp) + " EXP."}
 			}, 9, 5, 10, 0);
 
-		if (lvlUp > 0)
-			actionList.push_back(new ReverseFlagAction(battleHud->messageBoxOpened, [this]()
+		if (lvlUp.size() > 0)
+		{
+			cout << lvlUp.size() << endl;
+			actionList.push_back(new ReverseFlagAction(battleHud->messageBoxOpened, [this, lvlUp]()
 				{
+					cout << lvlUp.size() << endl;
+
 					gameCore->playSfx(GameCore::SFX_HEAL);
-					battleHud->pushMessage({
-						{"Level up!"}
-						}, 9, 5, 10, 0);
+					for (int i = 0; i < lvlUp.size(); ++i)
+					{
+
+						PlayerLevel prevLevel = player->levels[lvlUp[i].lvl - 1];
+
+						battleHud->pushMessage({
+						{"Level increased to " + gameCore->intToString(lvlUp[i].lvl) + "!"}
+							}, 9, 5, 10, 0);
+
+						battleHud->pushMessage({
+						{"Max HP went up by " + gameCore->intToString(lvlUp[i].levelStats.maxHP - prevLevel.levelStats.maxHP) + "!",
+						 "Max MP went up by " + gameCore->intToString(lvlUp[i].levelStats.maxMP - prevLevel.levelStats.maxMP) + "!",
+						 "HP and MP restored."}
+							}, 9, 5, 10, 0);
+
+						int diff = lvlUp[i].levelStats.bpDamage - prevLevel.levelStats.bpDamage;
+						if (diff > 0)
+							battleHud->pushMessage({
+							{"Base physical damage went up by " + gameCore->intToString(diff)}
+								}, 9, 5, 10, 0);
+
+						diff = lvlUp[i].levelStats.bmPower - prevLevel.levelStats.bmPower;
+						if (diff > 0)
+							battleHud->pushMessage({
+							{"Base magical power went up by " + gameCore->intToString(diff)}
+								}, 9, 5, 10, 0);
+
+						diff = lvlUp[i].levelStats.bpResist - prevLevel.levelStats.bpResist;
+						if (diff > 0)
+							battleHud->pushMessage({
+							{"Base physical resist went up by " + gameCore->intToString(diff)}
+								}, 9, 5, 10, 0);
+
+						diff = lvlUp[i].levelStats.bmResist - prevLevel.levelStats.bmResist;
+						if (diff > 0)
+							battleHud->pushMessage({
+							{"Base magical resist went up by " + gameCore->intToString(diff)}
+								}, 9, 5, 10, 0);
+					}
 				}
 			)
 			);
-
-		for (int i = 0; i < droplist.size(); i++)
-		{
-			battleHud->pushMessage({
-					{droplist[i]->name + " added", "to your inventory. "}
-				}, 9, 5, 10, 0);
 		}
+
+		actionList.push_back(new ReverseFlagAction(battleHud->messageBoxOpened, [this, &droplist]()
+			{
+				for (int i = 0; i < droplist.size(); i++)
+				{
+					battleHud->pushMessage({
+							{droplist[i]->name + " added", "to your inventory. "}
+						}, 9, 5, 10, 0);
+				}
+			}
+		)
+		);
 	}
+
 }
 
 void BattleLevel::handleEnter()
@@ -286,9 +333,9 @@ void BattleLevel::handlePlayerAction()
 	else if (currentAction->action == CharacterAction::SKILL)
 	{
 		currentSkill = player->spells[currentAction->id];
-		if (player->MP >= currentSkill->cost)
+		if (player->stats.MP >= currentSkill->cost)
 		{
-			player->MP -= currentSkill->cost;
+			player->addMp(-currentSkill->cost);
 			currentBuff = -1;
 			battleState = PLAYERSKILLPARSE;
 			battleHud->pushMessage(
@@ -432,7 +479,7 @@ void BattleLevel::handleEnemyAction()
 		else if (currentAction->action == CharacterAction::SKILL)
 		{
 			currentSkill = battleRequest.enemy->spells[currentAction->id];
-			battleRequest.enemy->MP -= currentSkill->cost;
+			battleRequest.enemy->addMp(-currentSkill->cost);
 			currentBuff = -1;
 			battleState = ENEMYSKILLPARSE;
 			battleHud->pushMessage(
@@ -525,28 +572,30 @@ void BattleLevel::handleEnemyEffects()
 
 void BattleLevel::handleEffectFrom(BattleCharacter user, const Buff& effect)
 {
-	cout << int(effect.effect) << " : " << int(effect.target) << endl;
+	Buff actualEffect = effect;
 	if (user == BattleCharacter::PLAYER)
 	{
+		actualEffect.value *= player->getMagicalMultiplier();
 		if (effect.target == Buff::SELF)
 		{
-			handleEffectTo(BattleCharacter::PLAYER, effect);
+			handleEffectTo(BattleCharacter::PLAYER, actualEffect);
 		}
 		else
 		{
-			handleEffectTo(BattleCharacter::ENEMY, effect);
+			handleEffectTo(BattleCharacter::ENEMY, actualEffect);
 		}
 	}
 
 	else if (user == BattleCharacter::ENEMY)
 	{
+		actualEffect.value *= battleRequest.enemy->getMagicalMultiplier();
 		if (effect.target == Buff::SELF)
 		{
-			handleEffectTo(BattleCharacter::ENEMY, effect);
+			handleEffectTo(BattleCharacter::ENEMY, actualEffect);
 		}
 		else
 		{
-			handleEffectTo(BattleCharacter::PLAYER, effect);
+			handleEffectTo(BattleCharacter::PLAYER, actualEffect);
 		}
 	}
 }

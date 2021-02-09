@@ -2,7 +2,7 @@
 #include "EnemiesH.h"
 #include <ctime>
 #include "LevelsH.h"
-#define FSCREEN
+//#define FSCREEN
 
 using namespace std;
 

@@ -55,6 +55,8 @@ GameCore::GameCore(Core* nCore)
 
 	resetTransition();
 
+	shakeRate = 1500;
+
 	//sfx list setup
 
 	soundlist[SFX_HIT1] = loadSfx("SFX/battle/sfx_hit1.wav", 128);
@@ -230,7 +232,7 @@ void GameCore::quickDrawText(const char* s, const Vector2& pos, int font, ALIGN_
 		else if (hAmp == 0 && vAmp != 0)
 			shakeOffset = Vector2(0, rand() % vAmp - vAmp / 2);
 
-		if (rand() % 1000 == 1)
+		if (rand() % shakeRate == 0)
 			shakeOffset += Vector2((rand() % 4 / 2) * (rand() % 100) / 50.0f, (rand() % 4 / 2) * (rand() % 100) / 50.0f);
 
 		drawTexture(fonts[font]->getSymbol(s[i])->getTexture(), curPos + shakeOffset);

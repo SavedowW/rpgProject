@@ -61,6 +61,7 @@ private:
 	SDL_Texture* rm_hud;
 	Camera* cam;
 	vector<Font*> fonts;
+	int shakeRate;
 
 	int cornerSize;
 	int borderWidth;

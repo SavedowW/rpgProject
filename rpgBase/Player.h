@@ -55,6 +55,14 @@ public:
 private:
 };
 
+const int MAXLVL = 5;
+struct PlayerLevel
+{
+	int lvl;
+	int minExp;
+	CharacterStats levelStats;
+};
+
 class Player : public Character, public Object
 {
 public:
@@ -66,11 +74,13 @@ public:
 	int exp;
 	int lvl;
 
+	PlayerLevel levels[MAXLVL + 1];
+
 	Player(const Vector2 &nPos);
 
 	int useItem(int id);
 	int removeItem(int id);
-	int gainExp(int nExp);
+	vector<PlayerLevel> gainExp(int nExp);
 
 	SDL_Texture* getSprite();
 
@@ -84,4 +94,6 @@ private:
 	static SDL_Texture* spr_idle;
 	int h;
 	hitbox relativeHBox;
+
+	void prepareLevels();
 };

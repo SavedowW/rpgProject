@@ -149,7 +149,6 @@
     <ClCompile Include="AnimatedTexture.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Background1.cpp" />
-    <ClCompile Include="Battle.cpp" />
     <ClCompile Include="BattleHUD.cpp" />
     <ClCompile Include="BattleLevel.cpp" />
     <ClCompile Include="Blader.cpp" />

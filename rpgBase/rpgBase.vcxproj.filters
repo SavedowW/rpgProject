@@ -186,9 +186,6 @@
     <ClCompile Include="Spell.cpp">
       <Filter>Spells\Spell</Filter>
     </ClCompile>
-    <ClCompile Include="Battle.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Character.cpp">
       <Filter>Characters\Character</Filter>
     </ClCompile>

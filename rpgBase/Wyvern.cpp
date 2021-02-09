@@ -6,15 +6,15 @@ Wyvern::Wyvern(GameCore* nGameCore)
 
 	name = "Wyvern";
 
-	maxHP = 50;
-	maxMP = 10;
-	HP = maxHP;
-	MP = maxMP;
+	stats.maxHP = 35;
+	stats.maxMP = 10;
+	stats.HP = stats.maxHP;
+	stats.MP = stats.maxMP;
 
-	bpDamage = 20;
-	bmPower = 10;
-	bpResist = 10;
-	bmResist = 20;
+	stats.bpDamage = 20;
+	stats.bmPower = 10;
+	stats.bpResist = 10;
+	stats.bmResist = 20;
 
 	weapon = (ItemWeapon*)BuildItem(ITEMLIST::ITEM_CLAWS);
 	armor = (ItemArmor*)BuildItem(ITEMLIST::ITEM_DENSE_SKIN);
@@ -36,7 +36,7 @@ Wyvern::Wyvern(GameCore* nGameCore)
 
 CharacterAction* Wyvern::stepAI()
 {
-	if (MP == maxMP)
+	if (stats.MP == stats.maxMP)
 		return new CharacterAction(CharacterAction::SKILL, 0);
 	else
 		return new CharacterAction(CharacterAction::ATTACK, 0);
