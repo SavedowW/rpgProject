@@ -246,12 +246,7 @@ void MapLevel::processInput(const SDL_Event& e)
 				}
 				break;
 			case (SDLK_p):
-				state = LEAVEBATTLE;
-				inputMethod = INPUT_NOINPUT;
-				battleRequest.enemy = new Wyvern(gameCore);
-				battleRequest.srcLevel = 1;
-				battleRequest.battleId = 0;
-				returnVal = {0, 0};
+				beginBattle(new Wyvern(gameCore), 0);
 				break;
 			case (SDLK_o):
 				pushMessage({

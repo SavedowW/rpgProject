@@ -1,5 +1,19 @@
 #include "BattleHUD.h"
 
+void BattleHUD::setEnemy(Enemy* nEnemy)
+{
+	enemy = nEnemy;
+
+	if (enemyHpBar == NULL)
+		delete enemyHpBar;
+
+	if (enemyMpBar == NULL)
+		delete enemyMpBar;
+
+	enemyHpBar = new ElementBar({ 260, 282 }, { 100, 13 }, gameCore, &(enemy->stats.HP), &(enemy->stats.maxHP), { 0, 150, 0, 255 }, { 0, 0, 0, 255 }, 14);
+	enemyMpBar = new ElementBar({ 400, 282 }, { 100, 13 }, gameCore, &(enemy->stats.MP), &(enemy->stats.maxMP), { 0, 0, 150, 255 }, { 0, 0, 0, 255 }, 14);
+}
+
 BattleHUD::BattleHUD(GameCore* nGameCore, Player* nPlayer)
 {
 	player = nPlayer;
@@ -21,6 +35,11 @@ BattleHUD::BattleHUD(GameCore* nGameCore, Player* nPlayer)
 	};
 	mainMenu = new ElementMenuHSelect(gameCore, options, {108, 337}, 11, 10, 130, 4);
 
+	playerHpBar = new ElementBar({ 280, 300 }, { 100, 13 }, gameCore, &(player->stats.HP), &(player->stats.maxHP), { 0, 150, 0, 255 }, {0, 0, 0, 255}, 14);
+	playerMpBar = new ElementBar({ 420, 300 }, { 100, 13 }, gameCore, &(player->stats.MP), &(player->stats.maxMP), { 0, 0, 150, 255 }, {0, 0, 0, 255}, 14);
+
+	enemyHpBar = NULL;
+	enemyMpBar = NULL;
 }
 
 void BattleHUD::draw()
@@ -33,6 +52,17 @@ void BattleHUD::draw()
 		{
 			gameCore->drawDarkWindow({ 30, 322 }, { 564, 14 });
 			mainMenu->draw();
+			gameCore->quickDrawText(player->name.c_str(), {110, 300}, 15, GameCore::TOP, GameCore::LEFT);
+			string lvlInfo = "LVL. " + gameCore->intToString(player->lvl);
+			gameCore->quickDrawText(lvlInfo.c_str(), { 200, 300 }, 15, GameCore::TOP, GameCore::LEFT);
+
+			playerHpBar->draw();
+			playerMpBar->draw();
+
+			gameCore->quickDrawText(enemy->name.c_str(), { 120, 282 }, 15, GameCore::TOP, GameCore::LEFT);
+
+			enemyHpBar->draw();
+			enemyMpBar->draw();
 		}
 
 		if (state == SKILLS)

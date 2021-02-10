@@ -163,6 +163,12 @@
     <Filter Include="Spells\SkillFactory">
       <UniqueIdentifier>{a0c90998-43eb-488b-98ab-d642fd999f2f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Levels\BattleLevel\BattleBackgrounds\Background2">
+      <UniqueIdentifier>{a7c744e0-62ac-45fe-985a-eee12cf0f7ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD\Elements\ElementBar">
+      <UniqueIdentifier>{f4464e61-955b-4420-b20e-0af0a0db4681}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -407,6 +413,12 @@
     </ClCompile>
     <ClCompile Include="SkillFactory.cpp">
       <Filter>Spells\SkillFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="Background2.cpp">
+      <Filter>Levels\BattleLevel\BattleBackgrounds\Background2</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementBar.cpp">
+      <Filter>HUD\Elements\ElementBar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -664,6 +676,12 @@
     </ClInclude>
     <ClInclude Include="SkillFactory.h">
       <Filter>Spells\SkillFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Background2.h">
+      <Filter>Levels\BattleLevel\BattleBackgrounds\Background2</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementBar.h">
+      <Filter>HUD\Elements\ElementBar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

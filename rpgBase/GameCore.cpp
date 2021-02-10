@@ -106,6 +106,11 @@ SDL_Texture* GameCore::createText(const char* textureText, SDL_Color textColor, 
 	return core->createText(textureText, textColor, fonts[fontId]->font);
 }
 
+SDL_Texture* GameCore::createTextureFromSurface(SDL_Surface* sur)
+{
+	return core->createTextureFromSurface(sur);
+}
+
 Mix_Chunk* GameCore::loadSfx(const char* file, int volume)
 {
 	Mix_Chunk* sfx = Mix_LoadWAV(file);

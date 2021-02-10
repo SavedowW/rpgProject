@@ -45,5 +45,5 @@ protected:
 
     CharacterAction* currentAction;
 
-    Background* backgrounds[1];
+    Background* backgrounds[2];
 };

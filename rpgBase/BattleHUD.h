@@ -3,10 +3,13 @@
 #include "ElementMessageBox.h"
 #include "ElementMenuHSelect.h"
 #include "ElementMenuVSelect.h"
+#include "ElementBar.h"
+#include "Enemy.h"
 
 class BattleHUD
 {
 public:
+	void setEnemy(Enemy* nEnemy);
 	BattleHUD(GameCore* nGameCore, Player* nPlayer);
 	void draw();
 	CharacterAction* proceedInput(const SDL_Event& e);
@@ -21,6 +24,7 @@ public:
 private:
 	GameCore* gameCore;
 	Player* player;
+
 	enum BaseState {OPENED, CLOSED} baseState;
 	enum State {MAINMENU, SKILLS, INVENTORY} state;
 
@@ -28,5 +32,12 @@ private:
 	ElementMenuVSelect* skills;
 	ElementMenuVSelect* inventory;
 
+	Enemy* enemy;
+
+	ElementBar* playerHpBar;
+	ElementBar* playerMpBar;
+
+	ElementBar* enemyHpBar;
+	ElementBar* enemyMpBar;
 };
 

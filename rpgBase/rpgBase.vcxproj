@@ -149,6 +149,7 @@
     <ClCompile Include="AnimatedTexture.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Background1.cpp" />
+    <ClCompile Include="Background2.cpp" />
     <ClCompile Include="BattleHUD.cpp" />
     <ClCompile Include="BattleLevel.cpp" />
     <ClCompile Include="Blader.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Chest1.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="Darkness.cpp" />
+    <ClCompile Include="ElementBar.cpp" />
     <ClCompile Include="ElementChestMenu.cpp" />
     <ClCompile Include="ElementInventoryMenu.cpp" />
     <ClCompile Include="ElementMenuHSelect.cpp" />
@@ -232,6 +234,7 @@
     <ClInclude Include="AnimatedTexture.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Background1.h" />
+    <ClInclude Include="Background2.h" />
     <ClInclude Include="BackgroundsH.h" />
     <ClInclude Include="BattleHUD.h" />
     <ClInclude Include="BattleLevel.h" />
@@ -244,6 +247,7 @@
     <ClInclude Include="Core.h" />
     <ClInclude Include="Darkness.h" />
     <ClInclude Include="DelayedAction.h" />
+    <ClInclude Include="ElementBar.h" />
     <ClInclude Include="ElementChestMenu.h" />
     <ClInclude Include="ElementInventoryMenu.h" />
     <ClInclude Include="ElementMenuHSelect.h" />

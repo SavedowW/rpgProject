@@ -44,6 +44,8 @@ int SDL_main(int argc, char* args[])
 	gameCore->registerFont("Fonts/mainOld.ttf", 15, { 255, 255, 0, 255 }); //Menu battle selected - 11
 	gameCore->registerFont("Fonts/mainOld.ttf", 15, { 255, 255, 255, 255 }); //MessageBox question unselected - 12
 	gameCore->registerFont("Fonts/mainOld.ttf", 15, { 255, 255, 0, 255 }); //MessageBox question selected - 13
+	gameCore->registerFont("Fonts/mainOld.ttf", 8, { 255, 255, 255, 255 }); //BattleHud bars - 14
+	gameCore->registerFont("Fonts/mainOld.ttf", 13, { 255, 255, 255, 255 }); //BattleHud small font - 15
 
 	Player* player = new Player({ 10, 10 });
 

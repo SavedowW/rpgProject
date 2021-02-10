@@ -93,6 +93,11 @@ SDL_Texture* Core::loadTexture(const char* file)
 	return texture;
 }
 
+SDL_Texture* Core::createTextureFromSurface(SDL_Surface* sur)
+{
+	return SDL_CreateTextureFromSurface(renderer, sur);
+}
+
 void Core::renderTexture(SDL_Texture* tex, int x, int y, int w, int h)
 {
 	SDL_Rect dst;

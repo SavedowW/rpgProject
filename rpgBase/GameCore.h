@@ -20,6 +20,7 @@ public:
 	//Texture load
 	SDL_Texture* loadTexture(const char* file);
 	SDL_Texture* createText(const char* textureText, SDL_Color textColor, int fontId);
+	SDL_Texture* createTextureFromSurface(SDL_Surface* sur);
 
 	//Drawing
 	void drawObject(Object* object);

@@ -6,6 +6,7 @@ BattleLevel::BattleLevel(int nLevelId) :
 {
 	battleHud = new BattleHUD(gameCore, player);
 	backgrounds[0] = new Background1(gameCore);
+	backgrounds[1] = new Background2(gameCore);
 }
 
 void BattleLevel::enter(int entrance)
@@ -19,6 +20,7 @@ void BattleLevel::enter(int entrance)
 	currentAction = NULL;
 	currentSkill = NULL;
 	currentBuff = -1;
+	battleHud->setEnemy(battleRequest.enemy);
 }
 
 LevelResult BattleLevel::levelProcess()
@@ -190,9 +192,7 @@ void BattleLevel::renderLevel()
 		}
 	}
 
-	gameCore->quickDrawText(("Player: " + gameCore->intToString(player->stats.HP) + " / " + gameCore->intToString(player->stats.MP)).c_str(), { 0, 0 }, 9, GameCore::TOP, GameCore::LEFT);
-	gameCore->quickDrawText((battleRequest.enemy->name + ": " + gameCore->intToString(battleRequest.enemy->stats.HP) + " / " + gameCore->intToString(battleRequest.enemy->stats.MP)).c_str(), { 0, 20 }, 9, GameCore::TOP, GameCore::LEFT);
-
+	
 	battleHud->draw();
 	gameCore->updateScreen();
 }

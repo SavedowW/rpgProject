@@ -28,6 +28,7 @@ public:
 	SDL_Texture* createTexture(int w, int h);
 	SDL_Texture* createTexture(Vector2 size);
 	SDL_Texture* loadTexture(const char* file);
+	SDL_Texture* createTextureFromSurface(SDL_Surface* sur);
 
 	//Texture render
 	void renderTexture(SDL_Texture* tex, int x, int y, int w, int h);
