@@ -31,3 +31,7 @@ Changed all HUD to dark, added SkillsFactory, removed all skill constructors fro
 === 09.02.2021 ===
 
 Changed stats and level system. Now battle ends with proper EXP gain / lvl up / stats up, although if you loose, still nothing happens. All character stats are united in CharacterStats struct, and HP / MP must be changed only through the addHp / addMp functions.
+
+=== 10.02.2021 ===
+
+Created normal battle HUD, removed hp / mp from screen corner
