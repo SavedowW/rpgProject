@@ -27,3 +27,7 @@ I'll describe all changes here
 === 08.02.2021 ===
 
 Changed all HUD to dark, added SkillsFactory, removed all skill constructors from other code, got rid of BattleMessageBox (which was an outdated copy of MessageBox), added a proper beginBattle and beginBattleInstantly functions, changed weapon equip logic and weapon class, created a new demo map with battle on trigger, weapon with unique spells, secret route and battle on trigger.
+
+=== 09.02.2021 ===
+
+Changed stats and level system. Now battle ends with proper EXP gain / lvl up / stats up, although if you loose, still nothing happens. All character stats are united in CharacterStats struct, and HP / MP must be changed only through the addHp / addMp functions.
