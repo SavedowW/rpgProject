@@ -1,7 +1,7 @@
 #include "MapLevel2.h"
 
 MapLevel2::MapLevel2(int nLevelId) :
-    MapLevel({ 1000, 360 }, { 640, 360 }, nLevelId)
+    MapLevel({ 1000, 360 }, { 640, 360 }, nLevelId, GameCore::MUS_DUNGEON)
 {
 	//Spawn points
 	spawnPoints.push_back({ 38.5, 173.5 });
@@ -293,9 +293,10 @@ MapLevel2::MapLevel2(int nLevelId) :
     staticObjects.push_back(obj);
     obj = new Wall_cRightOut_bottom({ 192, 128 });
     staticObjects.push_back(obj);
-    obj = new Blader({ 856.5, 144 });
+    obj = new Blader({ 856.5, 144 }, &dialogueInt);
     staticObjects.push_back(obj);
     activeObjects.push_back(obj);
+    interactiveObjects.push_back((InteractiveObject*)obj);
     obj = new Wall_high_left({ 928, 160 });
     staticObjects.push_back(obj);
     obj = new Wall_high_left({ 928, 96 });
@@ -396,5 +397,19 @@ MapLevel2::MapLevel2(int nLevelId) :
 
 void MapLevel2::uniqueLogic()
 {
-    
+    if (dialogueInt)
+    {
+        switch (*dialogueInt)
+        {
+            //Blader dialogue
+        case (1):
+            pushMessage({
+                    {"What?", "You have nothing to do here."}
+                }, 5, 5, 10, 0);
+            break;
+        }
+
+        delete dialogueInt;
+        dialogueInt = NULL;
+    }
 }

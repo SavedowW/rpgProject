@@ -1,11 +1,11 @@
 #pragma once
-#include "Object.h"
+#include "InteractiveObject.h"
 
 class Blader : 
-    public Object
+    public InteractiveObject
 {
 public:
-    Blader(const Vector2 & nPos);
+    Blader(const Vector2 & nPos, int** nTarget);
     SDL_Texture* getSprite();
 
 private:

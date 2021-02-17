@@ -9,7 +9,7 @@ public:
 
 	bool isCollide(const hitbox& pHBox);
 
-	hitbox hBox;
-
 	vector<Item*> inventory;
+
+	hitbox hBox;
 };

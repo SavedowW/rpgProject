@@ -12,6 +12,11 @@ BattleLevel::BattleLevel(int nLevelId) :
 void BattleLevel::enter(int entrance)
 {
 	returnVal = { -1, 0 };
+	if (battleRequest.battleId == 0)
+	{
+		gameCore->playMusic(GameCore::MUS_BATTLE1);
+	}
+
 	gameCore->setCam(cam);
 	isRunning = true;
 	inputMethod = INPUT_DEFAULT;
@@ -200,31 +205,38 @@ void BattleLevel::renderLevel()
 void BattleLevel::handleEnd()
 {
 	state = END;
+	returnVal = { battleRequest.srcLevel, -1 };
 
 	//Loose
 	if (player->stats.HP <= 0)
 	{
-		returnVal = { battleRequest.srcLevel, -1 };
-		battleHud->pushMessage({
-					{"You lost!"}
-			}, 9, 5, 10, 0);
+		actionList.push_back(new ReverseFlagAction(battleHud->messageBoxOpened, [this]()
+			{
+			gameCore->stopMusic();
+			battleHud->pushMessage({
+						{"You lost!"}
+				}, 9, 5, 10, 0);
+			})
+			);
 	}
 
 	//Win
 	else if (battleRequest.enemy->stats.HP <= 0)
 	{
-		returnVal = { battleRequest.srcLevel, -1 };
-
+		
 		int expUp = battleRequest.enemy->getExp();
 		cout << expUp << endl;
 		vector <PlayerLevel> lvlUp = player->gainExp(expUp);
 
 		const vector<Item*>& droplist = battleRequest.enemy->reward();
-
-
-		battleHud->pushMessage({
-					{"You won!", "Gained " + gameCore->intToString(expUp) + " EXP."}
-			}, 9, 5, 10, 0);
+		actionList.push_back(new ReverseFlagAction(battleHud->messageBoxOpened, [this, expUp]()
+			{
+				gameCore->stopMusic();
+				battleHud->pushMessage({
+							{"You won!", "Gained " + gameCore->intToString(expUp) + " EXP."}
+					}, 9, 5, 10, 0);
+			})
+		);
 
 		if (lvlUp.size() > 0)
 		{

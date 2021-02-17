@@ -1,7 +1,7 @@
 #include "MapLevel0.h"
 
 MapLevel0::MapLevel0(int nLevelId) :
-    MapLevel({ 640, 360 }, { 640, 360 }, nLevelId)
+    MapLevel({ 640, 360 }, { 640, 360 }, nLevelId, GameCore::MUS_DUNGEON)
 {
 	//Spawn points
 	spawnPoints.push_back({ 143.5, 228.5 });
@@ -229,9 +229,4 @@ MapLevel0::MapLevel0(int nLevelId) :
 
     //Triggers
     Trigger* trig;
-}
-
-void MapLevel0::uniqueLogic()
-{
-    
 }

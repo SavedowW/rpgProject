@@ -10,6 +10,7 @@
 #include "ObjectsH.h"
 #include "EnemiesH.h"
 #include "DelayedAction.h"
+#include "InteractiveObject.h"
 
 struct LevelResult
 {

@@ -7,7 +7,6 @@ class MapLevel1 :
 public:
 
     MapLevel1(int nLevelId);
-    virtual void uniqueLogic();
 
 protected:
 };

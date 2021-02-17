@@ -51,9 +51,21 @@ public:
 	void resetTransition();
 
 	//Sounds
-	enum Sounds {SFX_HIT1, SFX_HIT2, SFX_HEAL, SFX_BATTLEBEGIN_P1, SFX_BATTLEBEGIN_P2, SNDSIZE};
+	enum Sounds {SFX_HIT1, SFX_HIT2, SFX_HEAL, SFX_BATTLEBEGIN_P1, SFX_BATTLEBEGIN_P2, SND_NONE};
 	Mix_Chunk* loadSfx(const char* file, int volume);
 	void playSfx(Sounds snd);
+
+	//Music
+	enum Music { 
+		MUS_DUNGEON, 
+		MUS_MAP1,
+		MUS_BATTLE1,
+		MUS_BATTLE2,
+		MUS_NONE };
+	Music currentTheme;
+	void playMusic(Music musToPlay, bool forceRestart = false);
+	void playMusicFaded(Music musToPlay, int ms, bool forceRestart = false);
+	void stopMusic(int fadeOut = 1);
 
 private:
 	Core* core;
@@ -88,5 +100,6 @@ private:
 	const int bTransitionX = 8;
 	const int bTransitionY = 4;
 
-	Mix_Chunk* soundlist[SNDSIZE];
+	Mix_Chunk* soundlist[SND_NONE];
+	Mix_Music* musiclist[MUS_NONE];
 };

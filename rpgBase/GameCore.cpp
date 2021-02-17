@@ -64,6 +64,14 @@ GameCore::GameCore(Core* nCore)
 	soundlist[SFX_HEAL] = loadSfx("SFX/battle/sfx_heal.wav", 128);
 	soundlist[SFX_BATTLEBEGIN_P1] = loadSfx("SFX/sfx_beginBattle_p1.wav", 128);
 	soundlist[SFX_BATTLEBEGIN_P2] = loadSfx("SFX/sfx_beginBattle_p2.wav", 128);
+
+	//music list setup
+	musiclist[MUS_DUNGEON] = Mix_LoadMUS("SFX/soundtrack/mus_dungeon.ogg");
+	musiclist[MUS_BATTLE1] = Mix_LoadMUS("SFX/soundtrack/mus_battle1.ogg");
+	musiclist[MUS_BATTLE2] = Mix_LoadMUS("SFX/soundtrack/mus_battle2.wav");
+	musiclist[MUS_MAP1] = Mix_LoadMUS("SFX/soundtrack/mus_map1.wav");
+
+	currentTheme = MUS_NONE;
 }
 
 void GameCore::setRenderMode(RENDERMODE nRenderMode)
@@ -125,6 +133,30 @@ Mix_Chunk* GameCore::loadSfx(const char* file, int volume)
 void GameCore::playSfx(Sounds snd)
 {
 	Mix_PlayChannel(-1, soundlist[snd], 0);
+}
+
+void GameCore::playMusic(Music musToPlay, bool forceRestart)
+{
+	if (forceRestart || currentTheme != musToPlay)
+	{
+		currentTheme = musToPlay;
+		Mix_PlayMusic(musiclist[musToPlay], -1);
+	}
+}
+
+void GameCore::playMusicFaded(Music musToPlay, int ms, bool forceRestart)
+{
+	if (forceRestart || currentTheme != musToPlay)
+	{
+		currentTheme = musToPlay;
+		Mix_FadeInMusic(musiclist[musToPlay], -1, ms);
+	}
+}
+
+void GameCore::stopMusic(int fadeOut)
+{
+	currentTheme = MUS_NONE;
+	Mix_FadeOutMusic(fadeOut);
 }
 
 void GameCore::drawObject(Object* object)

@@ -1,8 +1,10 @@
 #include "MapLevel.h"
 
-MapLevel::MapLevel(const Vector2& nLvlSize, const Vector2& nCamSize, int nLevelId):
+MapLevel::MapLevel(const Vector2& nLvlSize, const Vector2& nCamSize, int nLevelId, GameCore::Music nTheme):
 	Level(nLvlSize, new Camera({0, 0}, nCamSize, nLvlSize, Camera::LOCK), nLevelId)
 {
+	musTheme = nTheme;
+
 	int timer = 0;
 	isRunning = false;
 	staticSolidMap.push_back(new hitbox(-10, 0, 10, size.y));
@@ -26,6 +28,8 @@ MapLevel::MapLevel(const Vector2& nLvlSize, const Vector2& nCamSize, int nLevelI
 	if (textureList == NULL)
 		textureList = new std::vector<AnimatedTexture*>;
 
+	dialogueInt = NULL;
+
 }
 
 void MapLevel::enter(int entrance)
@@ -47,6 +51,8 @@ void MapLevel::enter(int entrance)
 
 		//Place specific ID's here
 	}
+
+	gameCore->playMusicFaded(musTheme, 500);
 
 	gameCore->setCam(cam);
 
@@ -159,6 +165,11 @@ void MapLevel::renderLevel()
 		gameCore->drawHBox(chests[i]->hBox, {255, 0, 255, 100});
 	}
 
+	for (int i = 0; i < interactiveObjects.size(); i++)
+	{
+		gameCore->drawHBox(interactiveObjects[i]->hBox, { 255, 0, 255, 100 });
+	}
+
 	for (int i = 0; i < staticTriggerList.size(); ++i)
 	{
 		gameCore->drawHBox(staticTriggerList[i]->hBox, {255, 255, 0, 100});
@@ -242,6 +253,14 @@ void MapLevel::processInput(const SDL_Event& e)
 					{
 						inputMethod = INPUT_HUD;
 						player->stop();
+					}
+				}
+				else
+				{
+					for (int i = 0; i < interactiveObjects.size(); ++i)
+					{
+						if (interactiveObjects[i]->checkCollision(player->hBox))
+							break;
 					}
 				}
 				break;
@@ -366,11 +385,17 @@ void MapLevel::pushMessage(const vector<vector<string>>& multilines, int font, i
 
 void MapLevel::uniqueLogic()
 {
-	
+	if (dialogueInt)
+	{
+		delete dialogueInt;
+		dialogueInt = NULL;
+	}
 }
 
 void MapLevel::beginBattle(Enemy* enemy, int battleId)
 {
+	gameCore->stopMusic();
+
 	inputMethod = INPUT_NOINPUT;
 	player->stop();
 	gameCore->playSfx(GameCore::SFX_BATTLEBEGIN_P1);
@@ -385,6 +410,8 @@ void MapLevel::beginBattle(Enemy* enemy, int battleId)
 
 void MapLevel::beginBattleInstantly(Enemy* enemy, int battleId)
 {
+	gameCore->stopMusic();
+
 	inputMethod = INPUT_NOINPUT;
 	player->stop();
 
