@@ -35,3 +35,7 @@ Changed stats and level system. Now battle ends with proper EXP gain / lvl up / 
 === 10.02.2021 ===
 
 Created normal battle HUD, removed hp / mp from screen corner
+
+=== 17.02.2021 ===
+
+Added a simple music system and InteractiveObject class. All the cutscenes and dialogues now should be initiated through the dialogueInt (to be changed)
