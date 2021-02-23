@@ -39,3 +39,7 @@ Created normal battle HUD, removed hp / mp from screen corner
 === 17.02.2021 ===
 
 Added a simple music system and InteractiveObject class. All the cutscenes and dialogues now should be initiated through the dialogueInt (to be changed)
+
+=== 23.02.2021 ===
+
+Added a placeholder main menu and a simple way to create any number of menus and technical screens without problems with normal levels
