@@ -26,7 +26,7 @@ int SDL_main(int argc, char* args[])
 	core->setResolution({1920, 1080});
 	core->setFS(1);
 #else
-	core->setResolution({ 1280, 720 });
+	core->setResolution({ 640, 360 });
 #endif
 
 	gameCore->registerFont("Fonts/mainOld.ttf", 27, { 255, 255, 255, 255 }); //Titles
@@ -64,7 +64,7 @@ int SDL_main(int argc, char* args[])
 
 	levels[0] = new BattleLevel(0); //battle level
 	levels[1] = new MainMenu(1); //main menu
-	levels[2]; //settings
+	levels[2] = new SettingsMenu(2); //settings
 	levels[3]; //death screen
 	levels[LVLOFFSET + 1] = new MapLevel0(LVLOFFSET + 1);
 	levels[LVLOFFSET + 2] = new MapLevel1(LVLOFFSET + 2);

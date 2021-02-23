@@ -17,6 +17,10 @@ public:
 	void setCam(Camera* nCam);
 	void deleteCam();
 
+	//Global render
+	void setFS(int mode);
+	void setResolution(Vector2 res);
+
 	//Texture load
 	SDL_Texture* loadTexture(const char* file);
 	SDL_Texture* createText(const char* textureText, SDL_Color textColor, int fontId);

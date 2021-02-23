@@ -104,6 +104,16 @@ void GameCore::deleteCam()
 	cam = NULL;
 }
 
+void GameCore::setFS(int mode)
+{
+	core->setFS(mode);
+}
+
+void GameCore::setResolution(Vector2 res)
+{
+	core->setResolution(res);
+}
+
 SDL_Texture* GameCore::loadTexture(const char* file)
 {
 	return core->loadTexture(file);

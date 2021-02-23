@@ -44,6 +44,8 @@ bool Core::init()
 
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
+	fsMode = 0;
+
 	return true;
 }
 
@@ -158,13 +160,19 @@ void Core::updateScreen()
 
 void Core::setFS(int mode)
 {
+	fsMode = mode;
+
 	if (mode == 1)
 	{
+		setResolutionForced({640, 360});
 		SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+		setResolutionForced(currentResolution);
 	}
 	else if (mode == 2)
 	{
+		setResolutionForced({ 640, 360 });
 		SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+		setResolutionForced(currentResolution);
 	}
 	else
 	{
@@ -174,7 +182,18 @@ void Core::setFS(int mode)
 
 void Core::setResolution(Vector2 res)
 {
+	int mode = fsMode;
+
+	setFS(0);
+
 	currentResolution = res;
+	setResolutionForced(res);
+
+	setFS(mode);
+}
+
+void Core::setResolutionForced(Vector2 res)
+{
 	SDL_RenderSetScale(renderer, res.x / targetResolution.x, res.y / targetResolution.y);
 	SDL_SetWindowSize(window, res.x, res.y);
 }

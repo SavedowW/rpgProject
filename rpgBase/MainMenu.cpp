@@ -97,7 +97,8 @@ void MainMenu::processInput(const SDL_Event& e)
 			cout << "case LOADGAME\n";
 			break;
 		case (int(Elements::SETTINGS)):
-			cout << "case SETTINGS\n";
+			returnVal = { 2, 0 };
+			isRunning = false;
 			break;
 		case (int(Elements::QUIT)):
 			returnVal = { -1, 0 };

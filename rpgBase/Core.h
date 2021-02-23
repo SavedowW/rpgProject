@@ -43,6 +43,7 @@ public:
 	void updateScreen();
 	void setFS(int mode);
 	void setResolution(Vector2 res);
+	void setResolutionForced(Vector2 res);
 	
 	//Render target settings
 	void setRenderTarget(SDL_Texture* tex);
@@ -53,6 +54,7 @@ public:
 	SDL_Texture* createText(const char* textureText, SDL_Color textColor, TTF_Font* font);
 
 private:
+	int fsMode;
 	SDL_Renderer* renderer;
 	SDL_Window* window;
 	Vector2 currentResolution;

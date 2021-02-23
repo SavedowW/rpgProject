@@ -192,6 +192,7 @@
     <ClCompile Include="Monitor.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SettingsMenu.cpp" />
     <ClCompile Include="SkillFactory.cpp" />
     <ClCompile Include="Spell.cpp" />
     <ClCompile Include="staticInit.cpp" />
@@ -284,6 +285,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectsH.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SettingsMenu.h" />
     <ClInclude Include="SkillFactory.h" />
     <ClInclude Include="Spell.h" />
     <ClInclude Include="Symbol.h" />
