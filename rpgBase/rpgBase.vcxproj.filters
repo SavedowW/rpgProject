@@ -172,6 +172,9 @@
     <Filter Include="MapObjects\InteractiveObject">
       <UniqueIdentifier>{487d6bf7-2802-4348-9545-e1efcaffbd2a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Levels\MainMenu">
+      <UniqueIdentifier>{1f097a1c-5cf3-4637-94f2-40db79c25624}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -425,6 +428,9 @@
     </ClCompile>
     <ClCompile Include="InteractiveObject.cpp">
       <Filter>MapObjects\InteractiveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Levels\MainMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -691,6 +697,9 @@
     </ClInclude>
     <ClInclude Include="InteractiveObject.h">
       <Filter>MapObjects\InteractiveObject</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Levels\MainMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

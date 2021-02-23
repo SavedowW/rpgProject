@@ -10,6 +10,8 @@
 
 using namespace std;
 
+extern const int LVLOFFSET;
+
 class Core
 {
 public:

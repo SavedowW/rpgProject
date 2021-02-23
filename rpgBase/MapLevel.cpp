@@ -364,7 +364,7 @@ void MapLevel::movePlayer()
 		{
 			state = LEAVE;
 			inputMethod = INPUT_NOINPUT;
-			returnVal = { staticLeavePoints[i]->nextLvl, staticLeavePoints[i]->entrance };
+			returnVal = { staticLeavePoints[i]->nextLvl + LVLOFFSET, staticLeavePoints[i]->entrance };
 			player->stop();
 			break;
 		}

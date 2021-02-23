@@ -183,6 +183,7 @@
     <ClCompile Include="ItemWeapon.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MapLevel.cpp" />
     <ClCompile Include="MapLevel0.cpp" />
     <ClCompile Include="MapLevel1.cpp" />
@@ -273,6 +274,7 @@
     <ClInclude Include="ItemWeapon.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelsH.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MapLevel.h" />
     <ClInclude Include="MapLevel0.h" />
     <ClInclude Include="MapLevel1.h" />
