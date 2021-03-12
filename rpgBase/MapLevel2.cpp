@@ -293,10 +293,11 @@ MapLevel2::MapLevel2(int nLevelId) :
     staticObjects.push_back(obj);
     obj = new Wall_cRightOut_bottom({ 192, 128 });
     staticObjects.push_back(obj);
-    obj = new Blader({ 856.5, 144 }, &dialogueInt);
+    obj = new Blader({ 856.5, 144 }, &sceneInt[0]);
     staticObjects.push_back(obj);
     activeObjects.push_back(obj);
     interactiveObjects.push_back((InteractiveObject*)obj);
+    blader = (Blader*)obj;
     obj = new Wall_high_left({ 928, 160 });
     staticObjects.push_back(obj);
     obj = new Wall_high_left({ 928, 96 });
@@ -397,19 +398,35 @@ MapLevel2::MapLevel2(int nLevelId) :
 
 void MapLevel2::uniqueLogic()
 {
-    if (dialogueInt)
+    if (sceneInt[0])
     {
-        switch (*dialogueInt)
+        switch (*sceneInt[0])
         {
             //Blader dialogue
         case (1):
             pushMessage({
-                    {"What?", "You have nothing to do here."}
+                    {"What?", "Want to buy something?"}
                 }, 5, 5, 10, 0);
+            pushQuestionMultiselect(new vector<string>{"Store", "Talk", "Quit"}, &sceneInt[1]);
             break;
         }
 
-        delete dialogueInt;
-        dialogueInt = NULL;
+        delete sceneInt[0];
+        sceneInt[0] = NULL;
+    }
+
+    if (sceneInt[1])
+    {
+        switch (*sceneInt[1])
+        {
+            //Blader dialogue
+        case (0):
+            levelHud->open(&blader->storeList, "Blader");
+            inputMethod = INPUT_HUD;
+            break;
+        }
+
+        delete sceneInt[1];
+        sceneInt[1] = NULL;
     }
 }

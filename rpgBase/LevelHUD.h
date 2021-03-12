@@ -5,6 +5,7 @@
 #include "ElementInventoryMenu.h"
 #include "ElementSkillsMenu.h"
 #include "ElementChestMenu.h"
+#include "ElementStoreMenu.h"
 #include "Chest.h"
 
 class LevelHUD
@@ -15,6 +16,7 @@ public:
 	bool proceedInput(const SDL_Event &e); //true if closing
 	bool open(); //true if opening
 	bool open(Chest* chest);
+	bool open(vector<StoreItem> *store, const string& storeName);
 	void pushMessage(const vector<vector<string>>& multilines, int font, int nPeriod, int nLinePeriod, int voiceId);
 	void pushQuestionMultiselect(vector<string>* options, int** nTarget);
 
@@ -24,7 +26,7 @@ private:
 	GameCore* gameCore;
 	Player* player;
 	enum BaseState {OPENED, CLOSED} baseState;
-	enum State {MAINMENU, PLAYERDATA, INVENTORY, SKILLS, CHEST} state;
+	enum State {MAINMENU, PLAYERDATA, INVENTORY, SKILLS, CHEST, STORE} state;
 
 	Vector2 titlePos;
 
@@ -36,7 +38,7 @@ private:
 
 	ElementInventoryMenu* inventoryMenu;
 	ElementSkillsMenu* skillsMenu;
-	ElementChestMenu* chestMenu;
 
-	Chest* currentChest;
+	ElementChestMenu* chestMenu;
+	ElementStoreMenu* storeMenu;
 };

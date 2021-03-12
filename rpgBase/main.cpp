@@ -26,7 +26,7 @@ int SDL_main(int argc, char* args[])
 	core->setResolution({1920, 1080});
 	core->setFS(1);
 #else
-	core->setResolution({ 640, 360 });
+	core->setResolution({ 1280, 720 });
 #endif
 
 	gameCore->registerFont("Fonts/mainOld.ttf", 27, { 255, 255, 255, 255 }); //Titles

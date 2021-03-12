@@ -7,12 +7,12 @@ SettingsMenu::SettingsMenu(int nLevelId) :
 	(*options)[int(MenuElements::FULLSCREEN)] = "Fullscreen";
 	(*options)[int(MenuElements::RESOLUTION)] = "Resolution";
 	(*options)[int(MenuElements::RETURNTOMM)] = "Return to main menu";
-	mainMenu = new ElementMenuVSwitch(gameCore, options, Vector2{ 10, 100 }, 17, 16, 40, 50, 3, 3 );
+	mainMenu = new ElementMenuVSwitch(gameCore, options, Vector2{ 10, 50 }, 17, 16, 40, 50, 3, 3 );
 
 	options = new vector<string>(2);
 	(*options)[0] = "Disabled";
 	(*options)[1] = "Enabled";
-	fsMenu = new ElementMenuVSwitch(gameCore, options, Vector2{ 320, 100 }, 17, 16, 40, 50, 3, 3);
+	fsMenu = new ElementMenuVSwitch(gameCore, options, Vector2{ 350, 50 }, 17, 16, 40, 50, 3, 3);
 
 	options = new vector<string>(5);
 	(*options)[R640] = "640x360";
@@ -20,7 +20,7 @@ SettingsMenu::SettingsMenu(int nLevelId) :
 	(*options)[R1600] = "1600x900";
 	(*options)[R1920] = "1920x1080";
 	(*options)[R2560] = "2560x1440";
-	resMenu = new ElementMenuVSwitch(gameCore, options, Vector2{ 320, 100 }, 17, 16, 40, 50, 3, 3);
+	resMenu = new ElementMenuVSwitch(gameCore, options, Vector2{ 350, 50 }, 17, 16, 40, 50, 3, 3);
 }
 
 void SettingsMenu::enter(int entrance)

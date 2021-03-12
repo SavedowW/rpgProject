@@ -10,4 +10,5 @@ public:
     virtual void uniqueLogic();
 
 protected:
+    Blader* blader;
 };

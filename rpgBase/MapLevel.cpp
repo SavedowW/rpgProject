@@ -28,7 +28,10 @@ MapLevel::MapLevel(const Vector2& nLvlSize, const Vector2& nCamSize, int nLevelI
 	if (textureList == NULL)
 		textureList = new std::vector<AnimatedTexture*>;
 
-	dialogueInt = NULL;
+	for (int i = 0; i < SCENEINTSNUMBER; ++i)
+	{
+		sceneInt[i] = NULL;
+	}
 
 }
 
@@ -267,14 +270,6 @@ void MapLevel::processInput(const SDL_Event& e)
 			case (SDLK_p):
 				beginBattle(new Wyvern(gameCore), 0);
 				break;
-			case (SDLK_o):
-				pushMessage({
-					{"This is a simple question"},
-					{"Tell me, ", "what do you choose?"}
-					}, 5, 5, 10, 0);
-				dialogueInt = NULL;
-				pushQuestionMultiselect(new vector<string>{"First", "second"}, &dialogueInt);
-				break;
 			}
 		}
 		else if (e.type == SDL_KEYUP)
@@ -385,10 +380,13 @@ void MapLevel::pushMessage(const vector<vector<string>>& multilines, int font, i
 
 void MapLevel::uniqueLogic()
 {
-	if (dialogueInt)
+	for (int i = 0; i < SCENEINTSNUMBER; ++i)
 	{
-		delete dialogueInt;
-		dialogueInt = NULL;
+		if (sceneInt[i])
+		{
+			delete sceneInt[i];
+			sceneInt[i] = NULL;
+		}
 	}
 }
 

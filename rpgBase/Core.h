@@ -35,8 +35,6 @@ public:
 	//Texture render
 	void renderTexture(SDL_Texture* tex, int x, int y, int w, int h);
 	void renderTexture(SDL_Texture* tex, int x, int y);
-	void renderTextureHorPart(SDL_Texture* tex, int x, int y, int w, int h, float part);
-	void renderTextureHorPart(SDL_Texture* tex, int x, int y, float part);
 
 	//Global render
 	void fillRenderer(SDL_Color col);

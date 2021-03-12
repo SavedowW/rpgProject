@@ -73,6 +73,7 @@ public:
 
 	int exp;
 	int lvl;
+	int money;
 
 	PlayerLevel levels[MAXLVL + 1];
 
@@ -81,6 +82,7 @@ public:
 	int useItem(int id);
 	int removeItem(int id);
 	vector<PlayerLevel> gainExp(int nExp);
+	void addMoney(int addM);
 
 	SDL_Texture* getSprite();
 

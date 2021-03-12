@@ -90,7 +90,7 @@ void MainMenu::processInput(const SDL_Event& e)
 		switch (tar)
 		{
 		case (int(Elements::NEWGAME)):
-			returnVal = { LVLOFFSET + 1, 0 };
+			returnVal = { LVLOFFSET + 3, 0 };
 			isRunning = false;
 			break;
 		case (int(Elements::LOADGAME)):

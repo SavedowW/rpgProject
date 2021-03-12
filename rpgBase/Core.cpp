@@ -119,34 +119,6 @@ void Core::renderTexture(SDL_Texture* tex, int x, int y)
 	renderTexture(tex, x, y, w, h);
 }
 
-void Core::renderTextureHorPart(SDL_Texture* tex, int x, int y, int w, int h, float part)
-{
-	SDL_Rect dst;
-
-	dst.x = x;
-	dst.y = y;
-	dst.w = w * part;
-	dst.h = h;
-
-	SDL_Rect src;
-
-	src.x = 0;
-	src.y = 0;
-	src.w = w * part;
-	src.h = h;
-
-	//cout << "Rendering from " << src.w << " to " << dst.w << endl;
-
-	SDL_RenderCopy(renderer, tex, &src, &dst);
-}
-
-void Core::renderTextureHorPart(SDL_Texture* tex, int x, int y, float part)
-{
-	int w, h;
-	SDL_QueryTexture(tex, NULL, NULL, &w, &h);
-	renderTextureHorPart(tex, x, y, w, h, part);
-}
-
 void Core::fillRenderer(SDL_Color col)
 {
 	SDL_SetRenderDrawColor(renderer, col.r, col.g, col.b, col.a);

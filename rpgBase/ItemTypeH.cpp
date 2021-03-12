@@ -77,3 +77,19 @@ Item* BuildItem(ITEMLIST itemId)
 
 	}
 }
+
+string getItemShortName(ITEMLIST itemId)
+{
+	Item* item = BuildItem(itemId);
+	string name = item->shortName;
+	delete item;
+	return name;
+}
+
+int getItemPrice(ITEMLIST itemId)
+{
+	Item* item = BuildItem(itemId);
+	int price = item->price;
+	delete item;
+	return price;
+}

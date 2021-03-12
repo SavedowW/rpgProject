@@ -15,6 +15,7 @@ Player::Player(const Vector2& nPos) :
 
 	exp = 1;
 	lvl = 1;
+	money = 999999;
 
 	spells.push_back(SkillFactory::BuildSkill(SkillFactory::SKILL_HEAL));
 	spells.push_back(SkillFactory::BuildSkill(SkillFactory::SKILL_FIRESTORM));
@@ -145,6 +146,11 @@ vector<PlayerLevel> Player::gainExp(int nExp)
 			exp = levels[MAXLVL].minExp;
 		return newLevels;
 	}
+}
+
+void Player::addMoney(int addM)
+{
+	money += addM;
 }
 
 SDL_Texture* Player::getSprite()

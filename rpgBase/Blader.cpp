@@ -12,6 +12,27 @@ Blader::Blader(const Vector2& nPos, int** nTarget) :
 	SDL_QueryTexture(spr_idle, NULL, NULL, &w, &h);
 	depth = pos.y + h;
 
+    storeList = {StoreItem(ITEMLIST::ITEM_APPLE, -1), StoreItem(ITEMLIST::ITEM_EXCALIBUR_RUSTY, 1)};
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+    storeList.push_back(StoreItem(ITEMLIST::ITEM_APPLE, -1));
+
     targetScene = 1;
 }
 

@@ -16,3 +16,21 @@ enum class ITEMLIST{
 };
 
 Item* BuildItem(ITEMLIST itemId);
+string getItemShortName(ITEMLIST itemId);
+int getItemPrice(ITEMLIST itemId);
+
+struct StoreItem
+{
+	ITEMLIST itemId;
+	int amount;
+	StoreItem(ITEMLIST nItemId, int nAmount)
+	{
+		itemId = nItemId;
+		amount = nAmount;
+	}
+	void decrease()
+	{
+		if (amount > 0)
+			--amount;
+	}
+};

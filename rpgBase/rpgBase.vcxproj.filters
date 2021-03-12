@@ -178,6 +178,9 @@
     <Filter Include="Levels\SettingsMenu">
       <UniqueIdentifier>{8553e1ff-4ca3-4e50-a795-694661ee84da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HUD\Elements\ElementStoreMenu">
+      <UniqueIdentifier>{c507bb27-65b9-443c-baaa-c22610c4b929}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -437,6 +440,9 @@
     </ClCompile>
     <ClCompile Include="SettingsMenu.cpp">
       <Filter>Levels\SettingsMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementStoreMenu.cpp">
+      <Filter>HUD\Elements\ElementStoreMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -709,6 +715,9 @@
     </ClInclude>
     <ClInclude Include="SettingsMenu.h">
       <Filter>Levels\SettingsMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementStoreMenu.h">
+      <Filter>HUD\Elements\ElementStoreMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

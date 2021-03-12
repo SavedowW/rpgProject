@@ -4,7 +4,9 @@
 class ElementMenuVSelect
 {
 public:
-	ElementMenuVSelect(GameCore* nGameCore, std::vector<string>* nOptions, const Vector2& nPos, int nFontSelected, int nFontUnselected, int nGap, int nLinesToPrint);
+	ElementMenuVSelect(GameCore* nGameCore, std::vector<string>* nOptions, const Vector2& nPos,
+		int nFontSelected, int nFontUnselected, int nGap, int nLinesToPrint,
+		GameCore::ALIGN_VER nVAl = GameCore::TOP, GameCore::ALIGN_HOR nHAl = GameCore::LEFT);
 
 	void inputUp();
 	void inputDown();
@@ -32,4 +34,7 @@ private:
 
 	int size;
 	int firstLine;
+
+	GameCore::ALIGN_VER vAl;
+	GameCore::ALIGN_HOR hAl;
 };

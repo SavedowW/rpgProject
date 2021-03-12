@@ -25,11 +25,11 @@ LevelHUD::LevelHUD(GameCore* nGameCore, Player* nPlayer)
 
 	inventoryMenu = new ElementInventoryMenu(gameCore, player, messageBox);
 	skillsMenu = new ElementSkillsMenu(gameCore, player, messageBox);
+
 	chestMenu = new ElementChestMenu(gameCore, player, messageBox);
+	storeMenu = new ElementStoreMenu(gameCore, player, messageBox);
 
 	playerData = NULL;
-
-	currentChest = NULL;
 }
 
 void LevelHUD::draw()
@@ -70,6 +70,11 @@ void LevelHUD::draw()
 			gameCore->quickDrawText("CHEST", titlePos, 0, GameCore::VCENTER, GameCore::HCENTER);
 			chestMenu->draw();
 		}
+		else if (state == STORE)
+		{
+			gameCore->quickDrawText("STORE", titlePos, 0, GameCore::VCENTER, GameCore::HCENTER);
+			storeMenu->draw();
+		}
 	}
 
 	messageBox->draw();
@@ -93,7 +98,7 @@ bool LevelHUD::proceedInput(const SDL_Event& e)
 			else
 				return false;
 		}
-		if (e.key.keysym.sym == SDLK_c || e.key.keysym.sym == SDLK_x)
+		if (e.key.keysym.sym == SDLK_c)
 		{
 			baseState = CLOSED;
 			return true;
@@ -208,23 +213,54 @@ bool LevelHUD::proceedInput(const SDL_Event& e)
 		{
 			if (e.key.keysym.sym == SDLK_DOWN)
 				chestMenu->inputDown();
-			else if (e.key.keysym.sym == SDLK_UP)
+			if (e.key.keysym.sym == SDLK_UP)
 				chestMenu->inputUp();
 			if (e.key.keysym.sym == SDLK_LEFT)
 				chestMenu->inputLeft();
-			else if (e.key.keysym.sym == SDLK_RIGHT)
+			if (e.key.keysym.sym == SDLK_RIGHT)
 				chestMenu->inputRight();
-			else if (e.key.keysym.sym == SDLK_z)
+			if (e.key.keysym.sym == SDLK_z)
 			{
 				if (!chestMenu->inputEnter())
 				{
 					state = MAINMENU;
 				}
 			}
-			else if (e.key.keysym.sym == SDLK_x)
+			if (e.key.keysym.sym == SDLK_x)
 			{
 				if (!chestMenu->inputBack())
 				{
+					baseState = CLOSED;
+					return true;
+				}
+			}
+		}
+	}
+	else if (state == STORE)
+	{
+		if (e.type == SDL_KEYDOWN)
+		{
+			if (e.key.keysym.sym == SDLK_DOWN)
+				storeMenu->inputDown();
+			if (e.key.keysym.sym == SDLK_UP)
+				storeMenu->inputUp();
+			if (e.key.keysym.sym == SDLK_LEFT)
+				storeMenu->inputLeft();
+			if (e.key.keysym.sym == SDLK_RIGHT)
+				storeMenu->inputRight();
+			if (e.key.keysym.sym == SDLK_z)
+			{
+				if (!storeMenu->inputEnter())
+				{
+					state = MAINMENU;
+				}
+			}
+			if (e.key.keysym.sym == SDLK_x)
+			{
+				cout << "Leave store\n";
+				if (!storeMenu->inputBack())
+				{
+					cout << "Leave store - done\n";
 					baseState = CLOSED;
 					return true;
 				}
@@ -248,9 +284,19 @@ bool LevelHUD::open(Chest* chest)
 {
 	baseState = OPENED;
 	state = CHEST;
-	currentChest = chest;
 
 	chestMenu->openChest(chest);
+
+	return true;
+}
+
+bool LevelHUD::open(vector<StoreItem>* store, const string& storeName)
+{
+
+	baseState = OPENED;
+	state = STORE;
+
+	storeMenu->openStore(store, storeName);
 
 	return true;
 }

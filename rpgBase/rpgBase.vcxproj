@@ -167,6 +167,7 @@
     <ClCompile Include="ElementMenuVSwitch.cpp" />
     <ClCompile Include="ElementMessageBox.cpp" />
     <ClCompile Include="ElementSkillsMenu.cpp" />
+    <ClCompile Include="ElementStoreMenu.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Floor_cBottomDuo.cpp" />
@@ -258,6 +259,7 @@
     <ClInclude Include="ElementMenuVSwitch.h" />
     <ClInclude Include="ElementMessageBox.h" />
     <ClInclude Include="ElementSkillsMenu.h" />
+    <ClInclude Include="ElementStoreMenu.h" />
     <ClInclude Include="EnemiesH.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Floor.h" />

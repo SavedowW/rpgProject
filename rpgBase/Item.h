@@ -19,6 +19,7 @@ public:
 	string name;
 	string shortName;
 	int price;
+	int priceToSell;
 	enum Type {OTHER, WEAPON, ARMOR, BUFFER} type;
 	enum Rarity {COMMON, RARE, UNIQUE, LEGENDARY} rarity;
 	Item(string nName, string nShortName, int nPrice, Type nType, Rarity nRarity, const vector<string>& nDescr, int nId = 0);

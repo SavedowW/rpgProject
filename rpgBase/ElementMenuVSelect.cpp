@@ -1,6 +1,8 @@
 #include "ElementMenuVSelect.h"
 
-ElementMenuVSelect::ElementMenuVSelect(GameCore* nGameCore, std::vector<string>* nOptions, const Vector2& nPos, int nFontSelected, int nFontUnselected, int nGap, int nLinesToPrint)
+ElementMenuVSelect::ElementMenuVSelect(GameCore* nGameCore, std::vector<string>* nOptions, const Vector2& nPos,
+	int nFontSelected, int nFontUnselected, int nGap, int nLinesToPrint,
+	GameCore::ALIGN_VER nVAl, GameCore::ALIGN_HOR nHAl)
 {
 	gameCore = nGameCore;
 
@@ -17,6 +19,9 @@ ElementMenuVSelect::ElementMenuVSelect(GameCore* nGameCore, std::vector<string>*
 	firstLine = 0;
 
 	size = options->size() - 1;
+
+	vAl = nVAl;
+	hAl = nHAl;
 }
 
 void ElementMenuVSelect::inputUp()
@@ -56,9 +61,9 @@ void ElementMenuVSelect::draw()
 	for (int i = firstLine; i <= size && i < firstLine + linesToPrint; i++)
 	{
 		if (toggle == i)
-			gameCore->quickDrawText((*options)[i].c_str(), aPos, fontSelected, GameCore::TOP, GameCore::LEFT);
+			gameCore->quickDrawText((*options)[i].c_str(), aPos, fontSelected, vAl, hAl);
 		else
-			gameCore->quickDrawText((*options)[i].c_str(), aPos, fontUnselected, GameCore::TOP, GameCore::LEFT);
+			gameCore->quickDrawText((*options)[i].c_str(), aPos, fontUnselected, vAl, hAl);
 		aPos += {0, (float)gap};
 	}
 }

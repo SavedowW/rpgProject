@@ -32,7 +32,10 @@ public:
     virtual void enter(int entrance);
     virtual LevelResult levelProcess();
 
-    int* dialogueInt;
+    static const int SCENEINTSNUMBER = 10;
+    int* sceneInt[SCENEINTSNUMBER];
+    //sceneInt[0] is for any scene initialization
+    //1 - SCENEINTSNUMBER - for local scene stuff
 
 protected:
     virtual void renderLevel();
