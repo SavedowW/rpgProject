@@ -3,6 +3,8 @@
 #include <ctime>
 #include "LevelsH.h"
 //#define FSCREEN
+#define THIS_DEF_IS_DEFINED_FROM_OTHER_DEVICE
+//com
 
 using namespace std;
 
