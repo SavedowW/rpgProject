@@ -43,3 +43,7 @@ Added a simple music system and InteractiveObject class. All the cutscenes and d
 === 23.02.2021 ===
 
 Added a placeholder main menu and a simple way to create any number of menus and technical screens without problems with normal levels. Added a placeholder settings with fullscreen and resolution configuration and changed setFS and setResolution functions in core so they work properly in any order
+
+=== 13.03.2021 ===
+
+Added store menu and changed project cfg so now it keep SDL inside of the project and accesss it with SolutionDir
