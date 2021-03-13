@@ -10,8 +10,8 @@ Each level has a input method state, which is "INPUT_DEFAULT", "INPUT_HUD", "INP
 With INPUT_HUD all input goes into HUD except stuff like window close button,
 with INPUT_NOINPUT all input goes into nothing except some stuff/
 
-GameCore is a divine objects, althougth it can be easily edited or expanded without bug problems. The only actual problem about is that the game is closely tied to the
-target resolution ({640, 360} - like 640x480, but 16:9) so it's hard to change it and 16x16 sprites are quite small. And also i idk how to properly keep SFX and music
+GameCore is a divine objects, althougth it can be easily edited or expanded without big problems. The only actual problem about is that the game is closely tied to the
+target resolution ({640, 360} - like 640x480, but 16:9) so it's hard to change it and 16x16 sprites are quite small. And also idk how to properly keep SFX and music
 so i just load it all here. And, yeah, text system is nice and all, but all fonts are should be registered somewhere and you need to know their ID to use them, and
 changing it will break all ID's.
 
