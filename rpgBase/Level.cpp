@@ -7,6 +7,8 @@ Level::Level(const Vector2& nSize, Camera* nCam, int nLevelId)
 	isRunning = false;
 	inputMethod = INPUT_DEFAULT;
 	levelId = nLevelId;
+	if (fpsManager == NULL)
+		fpsManager = new FPSManager(60);
 }
 
 void Level::handleDelayedActions()

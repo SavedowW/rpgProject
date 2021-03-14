@@ -5,6 +5,7 @@ Core * Object::core = NULL;
 SDL_Texture* Player::spr_idle = NULL;
 Player* Level::player = NULL;
 GameCore* Level::gameCore = NULL;
+FPSManager* Level::fpsManager = NULL;
 SDL_Texture* MapLevel::spr_transition = NULL;
 BattleRequest Level::battleRequest = {NULL, 0, 0};
 LevelHUD* MapLevel::levelHud = NULL;

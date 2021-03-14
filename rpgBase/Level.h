@@ -11,6 +11,7 @@
 #include "EnemiesH.h"
 #include "DelayedAction.h"
 #include "InteractiveObject.h"
+#include "FPSManager.h"
 
 struct LevelResult
 {
@@ -102,6 +103,8 @@ protected:
 	bool isRunning;
 	Vector2 size;
 	Camera* cam;
+
+	static FPSManager* fpsManager;
 
 	static bool isLower(const Object* lhs, const Object* rhs);
 };

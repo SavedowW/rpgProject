@@ -57,11 +57,6 @@ int SDL_main(int argc, char* args[])
 	LevelResult levelResult = {1, 0};
 	Level* levels[7];
 
-	/*levels[0] = new BattleLevel(0);
-	levels[1] = new MapLevel0(1);
-	levels[2] = new MapLevel1(2);
-	levels[3] = new MapLevel2(3);*/
-
 	levels[0] = new BattleLevel(0); //battle level
 	levels[1] = new MainMenu(1); //main menu
 	levels[2] = new SettingsMenu(2); //settings

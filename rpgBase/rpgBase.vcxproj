@@ -176,6 +176,7 @@
     <ClCompile Include="Floor_cLeft.cpp" />
     <ClCompile Include="Floor_cRight.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FPSManager.cpp" />
     <ClCompile Include="GameCore.cpp" />
     <ClCompile Include="InteractiveObject.cpp" />
     <ClCompile Include="ItemTypeH.cpp" />
@@ -269,6 +270,7 @@
     <ClInclude Include="Floor_cLeft.h" />
     <ClInclude Include="Floor_cRight.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="FPSManager.h" />
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="InteractiveObject.h" />
     <ClInclude Include="LevelHUD.h" />

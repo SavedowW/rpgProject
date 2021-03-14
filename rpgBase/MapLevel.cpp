@@ -74,6 +74,8 @@ LevelResult MapLevel::levelProcess()
 
 	while (isRunning)
 	{
+		fpsManager->beginFrame();
+
 		while (SDL_PollEvent(&e))
 		{
 			processInput(e);
@@ -114,7 +116,7 @@ LevelResult MapLevel::levelProcess()
 		//DRAWING
 
 		renderLevel();
-		SDL_Delay(1000.0 / 60.0);
+		SDL_Delay(fpsManager->delayFrame());
 	}
 	gameCore->deleteCam();
 	return returnVal;

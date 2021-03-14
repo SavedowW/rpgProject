@@ -181,6 +181,9 @@
     <Filter Include="HUD\Elements\ElementStoreMenu">
       <UniqueIdentifier>{c507bb27-65b9-443c-baaa-c22610c4b929}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Levels\FPSManager">
+      <UniqueIdentifier>{528cd996-ef6d-4601-97db-a20db286d8ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -443,6 +446,9 @@
     </ClCompile>
     <ClCompile Include="ElementStoreMenu.cpp">
       <Filter>HUD\Elements\ElementStoreMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSManager.cpp">
+      <Filter>Levels\FPSManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -718,6 +724,9 @@
     </ClInclude>
     <ClInclude Include="ElementStoreMenu.h">
       <Filter>HUD\Elements\ElementStoreMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSManager.h">
+      <Filter>Levels\FPSManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
