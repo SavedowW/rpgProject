@@ -47,3 +47,7 @@ Added a placeholder main menu and a simple way to create any number of menus and
 === 13.03.2021 ===
 
 Added store menu and changed project cfg so now it keep SDL inside of the project and accesss it with SolutionDir
+
+=== 14.03.2021 ===
+
+Added a FPS manager that calculates delay value to keep FPS stable. It works strange with high numbers like 144 fps (real FPS is ~160), but okay with 30/60
