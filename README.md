@@ -8,7 +8,7 @@ Level proceeds through main, battle level is levels[0], level switch request is 
 
 Each level has a input method state, which is "INPUT_DEFAULT", "INPUT_HUD", "INPUT_NOINPUT".
 With INPUT_HUD all input goes into HUD except stuff like window close button,
-with INPUT_NOINPUT all input goes into nothing except some stuff/
+with INPUT_NOINPUT all input goes into nothing except some stuff.
 
 GameCore is a divine objects, althougth it can be easily edited or expanded without big problems. The only actual problem about is that the game is closely tied to the
 target resolution ({640, 360} - like 640x480, but 16:9) so it's hard to change it and 16x16 sprites are quite small. And also idk how to properly keep SFX and music
@@ -19,7 +19,7 @@ HUD is the worst part of this code. I thought it's gonna be small, but it seems 
 to make a big interface and make it just like a whole sub-level and now it's insanely hard to edit and expand.
 I would be glad if somebody will give some info about good HUD architecture in this situation, I don't think it's effective to use regular
 windows-like system (keep many windows at once, one is focused and catches input) or state system (sometimes i show many menus at once, sometimes I don't).
-Besides, player is supposed to do lots of things through the HUD (inventory / chest management, skill description / usage of heal, restore, etc, growth (not done yes)) so
+Besides, player is supposed to do lots of things through the HUD (inventory / chest management, skill description / usage of heal, restore, etc) so
 sending requests to the level is not effective as well.
 
 I'll describe all changes here
