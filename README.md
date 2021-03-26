@@ -51,3 +51,7 @@ Added store menu and changed project cfg so now it keep SDL inside of the projec
 === 14.03.2021 ===
 
 Added a FPS manager that calculates delay value to keep FPS stable. It works strange with high numbers like 144 fps (real FPS is ~160), but okay with 30/60
+
+=== 26.03.2021 ===
+
+Added transition system and removed outdated stuff
