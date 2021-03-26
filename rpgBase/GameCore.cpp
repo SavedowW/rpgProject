@@ -53,12 +53,9 @@ GameCore::GameCore(Core* nCore)
 	darkInnerColor.b = 0x00;
 	darkInnerColor.a = 255;
 
-	resetTransition();
-
 	shakeRate = 1500;
 
 	//sfx list setup
-
 	soundlist[SFX_HIT1] = loadSfx("SFX/battle/sfx_hit1.wav", 128);
 	soundlist[SFX_HIT2] = loadSfx("SFX/battle/sfx_hit2.wav", 128);
 	soundlist[SFX_HEAL] = loadSfx("SFX/battle/sfx_heal.wav", 128);
@@ -72,6 +69,8 @@ GameCore::GameCore(Core* nCore)
 	musiclist[MUS_MAP1] = Mix_LoadMUS("SFX/soundtrack/mus_map1.wav");
 
 	currentTheme = MUS_NONE;
+
+	transitionSystem = new TransitionSystem(core);
 }
 
 void GameCore::setRenderMode(RENDERMODE nRenderMode)
@@ -372,76 +371,4 @@ void GameCore::drawLine(Vector2 p1, Vector2 p2, SDL_Color col)
 	{
 		core->drawLine(p1, p2, col);
 	}
-}
-
-bool GameCore::drawTransitionBattle(bool in)
-{
-	setRenderMode(RM_HUD);
-
-	Vector2 partSize = {core->targetResolution.x / bTransitionX, core->targetResolution.y / bTransitionY };
-
-	int cnt = bTransitionX * bTransitionY;
-
-	float length = 10;
-
-
-	if (in)
-	{
-		float current = 0;
-
-		for (int i = 0; i < bTransitionX; i++)
-		{
-			for (int k = 0; k < bTransitionY; k++)
-			{
-				++current;
-				float n = max(target1 - current, 0.0f);
-				if (n > length)
-					n = length;
-				Vector2 size = partSize * (n / length);
-				Vector2 pos = { partSize.x * i + (partSize.x - size.x) / 2, partSize.y * k + (partSize.y - size.y) / 2 };
-				core->drawFilledRect(pos, size, { 0, 0, 0, Uint8(255.0f * (n / length)) });
-			}
-		}
-		//cout << target1 << endl;
-		if (target1 < cnt + length)
-		{
-			++target1;
-			return false;
-		}
-		else return true;
-	}
-	else
-	{
-		float current = cnt;
-
-		for (int i = bTransitionX; i >= 0 ; --i)
-		{
-			for (int k = bTransitionY; k >= 0; --k)
-			{
-				--current;
-				float n = max(target1 - current, 0.0f);
-				if (n > length)
-					n = length;
-				Vector2 size = partSize * (n / length);
-				Vector2 pos = { partSize.x * i + (partSize.x - size.x) / 2, partSize.y * k + (partSize.y - size.y) / 2 };
-				core->drawFilledRect(pos, size, { 0, 0, 0, Uint8(255.0f * (n / length)) });
-			}
-		}
-		//cout << target1 << endl;
-		if (target1 + length + 2 > 0)
-		{
-			--target1;
-			return false;
-		}
-		else
-		{
-			return true;
-			target1 = 0;
-		}
-	}
-}
-
-void GameCore::resetTransition()
-{
-	target1 = 0;
 }

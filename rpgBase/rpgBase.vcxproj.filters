@@ -184,6 +184,18 @@
     <Filter Include="Levels\FPSManager">
       <UniqueIdentifier>{528cd996-ef6d-4601-97db-a20db286d8ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameCore\TransitionSystem">
+      <UniqueIdentifier>{807db176-7048-4715-9a8f-508f94d0eb32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\TransitionSystem\Transitions">
+      <UniqueIdentifier>{c9b97280-e229-4794-8238-1bf73e501eb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\TransitionSystem\Transitions\Transition1">
+      <UniqueIdentifier>{386a6750-aaff-4e74-b9f6-dbfc7cc8f929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCore\TransitionSystem\Transitions\Transition2">
+      <UniqueIdentifier>{91ee7c91-9fe2-41c3-a135-28cf4dd6bca4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -449,6 +461,18 @@
     </ClCompile>
     <ClCompile Include="FPSManager.cpp">
       <Filter>Levels\FPSManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionSystem.cpp">
+      <Filter>GameCore\TransitionSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>GameCore\TransitionSystem\Transitions</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition1.cpp">
+      <Filter>GameCore\TransitionSystem\Transitions\Transition1</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition2.cpp">
+      <Filter>GameCore\TransitionSystem\Transitions\Transition2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -727,6 +751,18 @@
     </ClInclude>
     <ClInclude Include="FPSManager.h">
       <Filter>Levels\FPSManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionSystem.h">
+      <Filter>GameCore\TransitionSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition.h">
+      <Filter>GameCore\TransitionSystem\Transitions</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition1.h">
+      <Filter>GameCore\TransitionSystem\Transitions\Transition1</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition2.h">
+      <Filter>GameCore\TransitionSystem\Transitions\Transition2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -17,6 +17,9 @@ void BattleLevel::enter(int entrance)
 		gameCore->playMusic(GameCore::MUS_BATTLE1);
 	}
 
+	gameCore->transitionSystem->setTransition(TransitionSystem::TR_BATTLELEVEL);
+	gameCore->transitionSystem->setState(Transition::State::IN);
+
 	gameCore->setCam(cam);
 	isRunning = true;
 	inputMethod = INPUT_DEFAULT;
@@ -125,6 +128,8 @@ LevelResult BattleLevel::levelProcess()
 			if (!*battleHud->messageBoxOpened && actionList.size() <= 0)
 			{
 				state = LEAVE;
+				gameCore->transitionSystem->setTransition(TransitionSystem::TR_BATTLELEVEL);
+				gameCore->transitionSystem->setState(Transition::State::OUT);
 			}
 		}
 
@@ -183,7 +188,7 @@ void BattleLevel::renderLevel()
 	battleRequest.enemy->draw();
 
 	if (state == ENTER)
-		if (gameCore->drawTransitionBattle(false))
+		if (gameCore->transitionSystem->draw())
 		{
 			state = RUN;
 			battleHud->pushMessage(battleRequest.enemy->appearanceText(), 9, 5, 10, 0);
@@ -191,11 +196,10 @@ void BattleLevel::renderLevel()
 
 	if (state == LEAVE)
 	{
-		if (gameCore->drawTransitionBattle(true))
+		if (gameCore->transitionSystem->draw())
 		{
 			returnVal = { battleRequest.srcLevel, -1 };
 			isRunning = false;
-			gameCore->resetTransition();
 		}
 	}
 

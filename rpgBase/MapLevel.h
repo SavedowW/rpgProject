@@ -50,10 +50,7 @@ protected:
     virtual void pushMessage(const vector<vector<string>>& multilines, int font, int nPeriod, int nLinePeriod, int voiceId);
     void pushQuestionMultiselect(vector<string>* options, int** nTarget);
 
-    int timer;
-    enum LevelState {ENTER, RUN, LEAVE, LEAVEBATTLE} state;
-    static SDL_Texture* spr_transition;
-    const int transitionPeriod = 30;
+    enum LevelState {ENTER, RUN, LEAVE} state;
     static LevelHUD* levelHud;
 
     SDL_Texture* spr_idle;

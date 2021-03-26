@@ -12,12 +12,6 @@ MapLevel::MapLevel(const Vector2& nLvlSize, const Vector2& nCamSize, int nLevelI
 	staticSolidMap.push_back(new hitbox(0, -10, size.x, 10));
 	staticSolidMap.push_back(new hitbox(0, size.y, size.x, 10));
 
-	if (spr_transition == NULL)
-	{
-		spr_transition = gameCore->loadTexture("Sprites/HUD/s_lvlTransition.png");
-		SDL_SetTextureBlendMode(spr_transition, SDL_BLENDMODE_BLEND);
-	}
-
 	if (levelHud == NULL)
 	{
 		levelHud = new LevelHUD(gameCore, player);
@@ -62,7 +56,8 @@ void MapLevel::enter(int entrance)
 	isRunning = true;
 	returnVal = { -1, 0 };
 
-	timer = transitionPeriod + 1;
+	gameCore->transitionSystem->setTransition(TransitionSystem::TR_MAPLEVEL);
+	gameCore->transitionSystem->setState(Transition::State::IN);
 	state = ENTER;
 	inputMethod = INPUT_DEFAULT;
 	player->updateHBox();
@@ -187,22 +182,13 @@ void MapLevel::renderLevel()
 		switch (state)
 		{
 		case (ENTER):
-			--timer;
-			SDL_SetTextureAlphaMod(spr_transition, 255.0 * float(timer) / transitionPeriod);
-			gameCore->drawTexture(spr_transition, {0, 0});
-			if (timer == 0) state = RUN;
-			break;
-		case (LEAVE):
-			++timer;
-			SDL_SetTextureAlphaMod(spr_transition, 255.0 * float(timer) / transitionPeriod);
-			gameCore->drawTexture(spr_transition, { 0, 0 });
-			if (timer == transitionPeriod)
+			if (gameCore->transitionSystem->draw())
 			{
-				isRunning = false;
+				state = RUN;
 			}
 			break;
-		case (LEAVEBATTLE):
-			if (gameCore->drawTransitionBattle(true))
+		case (LEAVE):
+			if (gameCore->transitionSystem->draw())
 			{
 				isRunning = false;
 			}
@@ -355,15 +341,20 @@ void MapLevel::movePlayer()
 		}
 	}
 
-	for (int i = 0; i < staticLeavePoints.size(); ++i)
+	if (state == RUN)
 	{
-		if (staticLeavePoints[i]->hBox.isCollideWith(player->hBox))
+		for (int i = 0; i < staticLeavePoints.size(); ++i)
 		{
-			state = LEAVE;
-			inputMethod = INPUT_NOINPUT;
-			returnVal = { staticLeavePoints[i]->nextLvl + LVLOFFSET, staticLeavePoints[i]->entrance };
-			player->stop();
-			break;
+			if (staticLeavePoints[i]->hBox.isCollideWith(player->hBox))
+			{
+				state = LEAVE;
+				gameCore->transitionSystem->setTransition(TransitionSystem::TR_MAPLEVEL);
+				gameCore->transitionSystem->setState(Transition::State::OUT);
+				inputMethod = INPUT_NOINPUT;
+				returnVal = { staticLeavePoints[i]->nextLvl + LVLOFFSET, staticLeavePoints[i]->entrance };
+				player->stop();
+				break;
+			}
 		}
 	}
 
@@ -420,7 +411,9 @@ void MapLevel::beginBattleInstantly(Enemy* enemy, int battleId)
 	battleRequest.battleId = battleId;
 
 	gameCore->playSfx(GameCore::SFX_BATTLEBEGIN_P2);
-	state = LEAVEBATTLE;
+	state = LEAVE;
+	gameCore->transitionSystem->setTransition(TransitionSystem::TR_BATTLELEVEL);
+	gameCore->transitionSystem->setState(Transition::State::OUT);
 	returnVal = { 0, 0 };
 }
 

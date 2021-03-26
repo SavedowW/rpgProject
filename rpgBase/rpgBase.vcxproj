@@ -202,6 +202,10 @@
     <ClCompile Include="staticInit.cpp" />
     <ClCompile Include="Symbol.cpp" />
     <ClCompile Include="TextMultiline.cpp" />
+    <ClCompile Include="Transition.cpp" />
+    <ClCompile Include="Transition1.cpp" />
+    <ClCompile Include="Transition2.cpp" />
+    <ClCompile Include="TransitionSystem.cpp" />
     <ClCompile Include="Trashcan1.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Wall_bottom.cpp" />
@@ -296,6 +300,10 @@
     <ClInclude Include="Spell.h" />
     <ClInclude Include="Symbol.h" />
     <ClInclude Include="TextMultiline.h" />
+    <ClInclude Include="Transition.h" />
+    <ClInclude Include="Transition1.h" />
+    <ClInclude Include="Transition2.h" />
+    <ClInclude Include="TransitionSystem.h" />
     <ClInclude Include="Trashcan1.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Wall_bottom.h" />

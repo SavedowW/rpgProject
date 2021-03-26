@@ -6,7 +6,7 @@ Wyvern::Wyvern(GameCore* nGameCore)
 
 	name = "Wyvern";
 
-	stats.maxHP = 35;
+	stats.maxHP = 1;
 	stats.maxMP = 10;
 	stats.HP = stats.maxHP;
 	stats.MP = stats.maxMP;

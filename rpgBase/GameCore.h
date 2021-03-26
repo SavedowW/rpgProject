@@ -5,6 +5,7 @@
 #include "AnimatedTexture.h"
 #include "Font.h"
 #include <sstream>
+#include "TransitionSystem.h"
 
 class GameCore
 {
@@ -50,10 +51,6 @@ public:
 	string floatToString(float val, int nums);
 	string intToString(int val);
 
-	//Transition control
-	bool drawTransitionBattle(bool in);
-	void resetTransition();
-
 	//Sounds
 	enum Sounds {SFX_HIT1, SFX_HIT2, SFX_HEAL, SFX_BATTLEBEGIN_P1, SFX_BATTLEBEGIN_P2, SND_NONE};
 	Mix_Chunk* loadSfx(const char* file, int volume);
@@ -70,6 +67,9 @@ public:
 	void playMusic(Music musToPlay, bool forceRestart = false);
 	void playMusicFaded(Music musToPlay, int ms, bool forceRestart = false);
 	void stopMusic(int fadeOut = 1);
+
+	//Transitions
+	TransitionSystem* transitionSystem;
 
 private:
 	Core* core;
@@ -99,10 +99,6 @@ private:
 	SDL_Texture* s_darkCornerBR;
 	SDL_Color darkBorderColor;
 	SDL_Color darkInnerColor;
-
-	float target1;
-	const int bTransitionX = 8;
-	const int bTransitionY = 4;
 
 	Mix_Chunk* soundlist[SND_NONE];
 	Mix_Music* musiclist[MUS_NONE];
