@@ -54,4 +54,4 @@ Added a FPS manager that calculates delay value to keep FPS stable. It works str
 
 === 26.03.2021 ===
 
-Added transition system and removed outdated stuff
+Added transition system and removed outdated stuff. Added smooth camera movement, changed it's limitation by level borders and created a way to add unique level input. Added a little test scene on MapLevel2
