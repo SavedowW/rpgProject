@@ -67,3 +67,8 @@ void Vector2::normalise()
 	x = x / l;
 	y = y / l;
 }
+
+const Vector2 Vector2::getIntCords()
+{
+	return Vector2(int(x), int(y));
+}

@@ -18,6 +18,7 @@ struct Vector2
 	void operator/=(const float& num);
 	float getLen() const;
 	void normalise();
+	const Vector2 getIntCords();
 };
 
 std::ostream& operator<< (std::ostream& out, const Vector2& vec);

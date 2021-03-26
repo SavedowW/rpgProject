@@ -160,7 +160,6 @@ SDL_Texture* Player::getSprite()
 
 void Player::update()
 {
-	
 }
 
 void Player::updateDepth()

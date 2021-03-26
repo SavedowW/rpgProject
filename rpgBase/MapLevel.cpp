@@ -27,6 +27,7 @@ MapLevel::MapLevel(const Vector2& nLvlSize, const Vector2& nCamSize, int nLevelI
 		sceneInt[i] = NULL;
 	}
 
+	cam->setSpeedCfg(Camera::CamMovementConfig(true, 50, 200));
 }
 
 void MapLevel::enter(int entrance)
@@ -106,7 +107,7 @@ LevelResult MapLevel::levelProcess()
 
 		//PRE-DRAWING
 
-		cam->update(player->pos);
+		updCam();
 
 		//DRAWING
 
@@ -278,6 +279,7 @@ void MapLevel::processInput(const SDL_Event& e)
 				break;
 			}
 		}
+		localDefInputControls(e);
 	}
 	else if (inputMethod == INPUT_HUD)
 	{
@@ -415,6 +417,15 @@ void MapLevel::beginBattleInstantly(Enemy* enemy, int battleId)
 	gameCore->transitionSystem->setTransition(TransitionSystem::TR_BATTLELEVEL);
 	gameCore->transitionSystem->setState(Transition::State::OUT);
 	returnVal = { 0, 0 };
+}
+
+void MapLevel::updCam()
+{
+	cam->update(player->pos);
+}
+
+void MapLevel::localDefInputControls(const SDL_Event& e)
+{
 }
 
 void MapLevel::pushQuestionMultiselect(vector<string>* options, int** nTarget)

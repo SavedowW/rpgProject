@@ -295,7 +295,6 @@ MapLevel2::MapLevel2(int nLevelId) :
     staticObjects.push_back(obj);
     obj = new Blader({ 856.5, 144 }, &sceneInt[0]);
     staticObjects.push_back(obj);
-    activeObjects.push_back(obj);
     interactiveObjects.push_back((InteractiveObject*)obj);
     blader = (Blader*)obj;
     obj = new Wall_high_left({ 928, 160 });
@@ -394,6 +393,8 @@ MapLevel2::MapLevel2(int nLevelId) :
 
     //Triggers
     Trigger* trig;
+
+    isPlayerFocused = true;
 }
 
 void MapLevel2::uniqueLogic()
@@ -428,5 +429,25 @@ void MapLevel2::uniqueLogic()
 
         delete sceneInt[1];
         sceneInt[1] = NULL;
+    }
+}
+
+void MapLevel2::updCam()
+{
+    if (isPlayerFocused)
+        cam->update(player->pos);
+    else
+        cam->update(blader->pos);
+}
+
+void MapLevel2::localDefInputControls(const SDL_Event& e)
+{
+    if (e.type == SDL_KEYDOWN)
+    {
+        if (e.key.keysym.sym == SDLK_t)
+        {
+            isPlayerFocused = !isPlayerFocused;
+            cam->setLimited(true, isPlayerFocused);
+        }
     }
 }

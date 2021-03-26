@@ -172,7 +172,8 @@ void GameCore::drawObject(Object* object)
 {
 	if (renderMode == RM_LEVEL && cam != NULL)
 	{
-		core->renderTexture(object->getSprite(), object->pos.x - cam->getCameraPos().x, object->pos.y - cam->getCameraPos().y);
+		Vector2 camPos = cam->getCameraPos();
+		core->renderTexture(object->getSprite(), object->pos.x - camPos.x, object->pos.y - camPos.y);
 	}
 	else
 	{

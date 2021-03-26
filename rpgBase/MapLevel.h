@@ -44,6 +44,8 @@ protected:
     virtual void uniqueLogic();
     virtual void beginBattle(Enemy* enemy, int battleId);
     virtual void beginBattleInstantly(Enemy* enemy, int battleId);
+    virtual void updCam();
+    virtual void localDefInputControls(const SDL_Event& e);
 
     GameCore::Music musTheme;
 
